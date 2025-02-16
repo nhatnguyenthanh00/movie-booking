@@ -1,9 +1,22 @@
-import React from 'react'
-
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 const Header = () => {
-  return (
-    <div>Header</div>
-  )
-}
+  const { user, logout } = useAuth();
 
-export default Header
+  return (
+    <nav>
+      <Link to="/">Home</Link>
+      <br></br>
+      {user ? (
+        <>
+          <span>Welcome, {user.userId} ({user.role})</span>
+          <button onClick={logout}>Logout</button>
+        </>
+      ) : (
+        <Link to="/login">Login</Link>
+      )}
+    </nav>
+  );
+};
+
+export default Header;

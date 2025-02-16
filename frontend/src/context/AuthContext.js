@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     await api.post("/auth/logout");
     setUser(null);
-    window.location.href = "/login"; // Reload UI
+    window.location.href = "/"; // Reload UI
   };
 
   return (
