@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "67b70973fa6dcee6ff3c3d3c"
+  },
+  "name": "Screen 1"
+},
+{
+  "_id": {
+    "$oid": "67b70973fa6dcee6ff3c3d3d"
+  },
+  "name": "Screen 2"
+},
+{
+  "_id": {
+    "$oid": "67b7e95ba7c956305cb7fd69"
+  },
+  "name": "Screen 3"
+},
+{
+  "_id": {
+    "$oid": "67b7e96ea7c956305cb7fd6b"
+  },
+  "name": "Screen 4"
+},
+{
+  "_id": {
+    "$oid": "67b7e97da7c956305cb7fd6d"
+  },
+  "name": "Screen 5"
+}]
