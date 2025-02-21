@@ -1,0 +1,302 @@
+[
+  {
+    "seatNumber": "A1",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "A2",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "A3",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "A4",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "A5",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "A6",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "A7",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "A8",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "A9",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "A10",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "B1",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "B2",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "B3",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "B4",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "B5",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "B6",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "B7",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "B8",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "B9",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "B10",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "C1",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "C2",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "C3",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "C4",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "C5",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "C6",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "C7",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "C8",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "C9",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "C10",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "D1",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "D2",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "D3",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "D4",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "D5",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "D6",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "D7",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "D8",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "D9",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "D10",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "E1",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "E2",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "E3",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "E4",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "E5",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "E6",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "E7",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "E8",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "E9",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  },
+  {
+    "seatNumber": "E10",
+    "room": "67b70973fa6dcee6ff3c3d3c",
+    "type": "normal",
+    "status": true
+  }
+]
