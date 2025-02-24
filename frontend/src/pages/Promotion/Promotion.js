@@ -1,6 +1,7 @@
 import React from "react";
 import "./promotion.css";
 export default function Promotion() {
+  //hoang
   return (
     <>
       <div className="container ">
