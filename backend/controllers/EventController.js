@@ -1,8 +1,18 @@
 const Event = require("../models/Event");
 
-const getAllEventHomePageImage = async (req, res) => {
+
+const getAllEvent = async (req, res) => {
     try {
-        const events = await Event.find().select('homePageUrl _id');
+        const events = await Event.find().select('homePageUrl startTime endTime _id');
+        res.status(200).json(events);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+const getAllEventHomePage = async (req, res) => {
+    try {
+        const events = await Event.find({ isMainEvent: true }).select('homePageUrl _id');
         res.status(200).json(events);
     } catch (error) {
         res.status(500).json(error);
@@ -36,5 +46,5 @@ const updateEvent = async (req, res) => {
     }
 }
 
-const eventController = {getAllEventHomePageImage, getEventById, addEvent, updateEvent};
+const eventController = {getAllEvent, getAllEventHomePage, getEventById, addEvent, updateEvent};
 module.exports = eventController;

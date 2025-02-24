@@ -9,8 +9,9 @@ const eventSchema = new mongoose.Schema({
         required: true,
         validator: function (value) { return this.startTime < value; } 
     },
-    homePageUrl: { type: String, required: true },
-    detailUrl: { type: String, required: true }
+    homePageUrl: { type: String },
+    detailUrl: { type: String, required: true },
+    isMainEvent: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Event', eventSchema);
