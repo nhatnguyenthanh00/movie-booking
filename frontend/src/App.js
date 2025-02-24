@@ -7,6 +7,8 @@ import Home from "./pages/Home/Home";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import SignUp from "./pages/Login/Signup";
+import ForgotPassword from "./pages/Login/ForgotPassword";
 const App = () => {
   return (
     <AuthProvider>
@@ -15,6 +17,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route
             path="/dashboard"
             element={
