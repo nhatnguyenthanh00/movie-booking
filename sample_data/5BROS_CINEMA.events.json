@@ -3,7 +3,7 @@
     "$oid": "67b8516a2a9bd1578aa2f88c"
   },
   "title": "Nhập hội U22, Lotte Cinema đồng giá 65.000Đ/vé phim 2D khi thanh toán với MoMo!",
-  "description": "<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>Áp dụng khi thanh toán tại rạp bằng MoMo.<?xml:namespace prefix = \"o\" ns = \"urn:schemas-microsoft-com:office:office\" /><o:p></o:p></FONT></P>\r\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>Chỉ áp dụng cho khách hàng thành viên của Lotte Cinema.<o:p></o:p></FONT></P>\r\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>1 thẻ học sinh, sinh viên có thể áp dụng được cho cả nhóm khách hàng đi cùng đối với phim không giới hạn độ tuổi (các phim từ T13 trở lên cần kiểm tra thẻ của từng người)<o:p></o:p></FONT></P>\r\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>Không áp dụng đồng thời với các chương trình khuyến mãi khác.<o:p></o:p></FONT></P>\r\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>Không áp dụng nếu trùng vào ngày lễ, Tết.<o:p></o:p></FONT></P>\r\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>Không áp dụng cho các suất chiếu đặc biệt hoặc phim ra mắt sớm.<o:p></o:p></FONT></P>\r\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>* Apple/ Google không tài trợ cho bất cứ hoạt động kinh doanh &amp; thương mại nào của MoMo.</FONT><o:p></o:p></P>",
+  "description": "<P class=MsoNormal style=\\\"MARGIN: 0cm 0cm 8pt\\\"><FONT face=Calibri><STRONG>Dành riêng cho các mọt phim U22 của Lotte Cinema! Từ nay khi thanh toán vé phim Lotte Cinema với MoMo, bạn sẽ được áp dụng đồng giá từ 65.000Đ/vé phim 2D. Giá “hạt dẻ”, đặt vé ngay.<?xml:namespace prefix = \\\"o\\\" ns = \\\"urn:schemas-microsoft-com:office:office\\\" /><o:p></o:p></STRONG></FONT></P><P class=MsoNormal style=\\\"MARGIN: 0cm 0cm 8pt\\\"><FONT face=Calibri>Ưu đãi đồng giá vé phim 2D áp dụng tại các cụm rạp sau:<o:p></o:p></FONT></P><P class=MsoNormal style=\\\"MARGIN: 0cm 0cm 8pt\\\"><FONT face=Calibri><STRONG>* Đồng giá 65k/vé:</STRONG> Nam Sài Gòn, Gò Vấp, Cộng Hòa, Cantavil, Ung Văn Khiêm, Moonlight, NowZone, Phú Thọ, Goldview, Hà Đông, Thăng Long, Long Biên, Kosmo, Minh Khai, Hải Phòng, Đà Nẵng, Đồng Nai, Biên Hoà, Nha Trang Thái Nguyên, Nha Trang Trần Phú, Vũng Tàu.<o:p></o:p></FONT></P><P class=MsoNormal style=\\\"MARGIN: 0cm 0cm 8pt\\\"><FONT face=Calibri><STRONG>* Đồng Giá 55k/vé:</STRONG> Bắc Giang, Hạ Long, Thanh Hóa, Vinh, Bình Dương, Dĩ An, Tây Ninh, Cần Thơ Ninh Kiều, Cần Thơ Cái Răng.<o:p></o:p></FONT></P><P class=MsoNormal style=\\\"MARGIN: 0cm 0cm 8pt\\\"><FONT face=Calibri><STRONG>* Đồng Giá 50k/vé:</STRONG> Cà Mau, Long Xuyên, Thủ Đức.<o:p></o:p></FONT></P><P class=MsoNormal style=\\\"MARGIN: 0cm 0cm 8pt\\\"><FONT face=Calibri><STRONG>* Đồng giá 45k/vé:</STRONG> Huế<o:p></o:p></FONT></P><P class=MsoNormal style=\\\"MARGIN: 0cm 0cm 8pt\\\"><FONT face=Calibri><STRONG><EM>Thời gian áp dụng: </EM></STRONG></FONT><FONT face=Calibri>Từ thứ 2 đến thứ 6 hàng tuần khi mua vé tại rạp Lotte Cinema và thanh toán với MoMo.<o:p></o:p></FONT></P><P class=MsoNormal style=\\\"MARGIN: 0cm 0cm 8pt\\\"><FONT face=Calibri><STRONG><EM>Đối tượng áp dụng: </EM></STRONG></FONT><FONT face=Calibri>Khách hàng là thành viên U22 (12 đến 22 tuổi) của Lotte Cinema, có thẻ HSSV, CCCD dưới 22 tuổi.</FONT><o:p></o:p></P>",
   "startTime": {
     "$date": "2025-01-01T00:00:00.000Z"
   },
@@ -13,7 +13,8 @@
   "homePageUrl": "https://media.lottecinemavn.com/Media/Event/fabceedb4e59444a8ce72082cb4108e5.jpg",
   "detailUrl": "https://media.lottecinemavn.com/Media/Event/3ba5650df4194aab88093b0e40fca13a.jpg",
   "__v": 0,
-  "isMainEvent": true
+  "isMainEvent": true,
+  "noticeContent": "<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>Áp dụng khi thanh toán tại rạp bằng MoMo.<?xml:namespace prefix = \"o\" ns = \"urn:schemas-microsoft-com:office:office\" /><o:p></o:p></FONT></P>\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>Chỉ áp dụng cho khách hàng thành viên của Lotte Cinema.<o:p></o:p></FONT></P>\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>1 thẻ học sinh, sinh viên có thể áp dụng được cho cả nhóm khách hàng đi cùng đối với phim không giới hạn độ tuổi (các phim từ T13 trở lên cần kiểm tra thẻ của từng người)<o:p></o:p></FONT></P>\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>Không áp dụng đồng thời với các chương trình khuyến mãi khác.<o:p></o:p></FONT></P>\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>Không áp dụng nếu trùng vào ngày lễ, Tết.<o:p></o:p></FONT></P>\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>Không áp dụng cho các suất chiếu đặc biệt hoặc phim ra mắt sớm.<o:p></o:p></FONT></P>\n<P class=MsoNormal style=\"MARGIN: 0cm 0cm 8pt\"><FONT face=Calibri>* Apple/ Google không tài trợ cho bất cứ hoạt động kinh doanh &amp; thương mại nào của MoMo.</FONT><o:p></o:p></P>"
 },
 {
   "_id": {
@@ -30,7 +31,8 @@
   "homePageUrl": "https://media.lottecinemavn.com/Media/Event/cadd3ccff5ba41a4ab161ecce5aad174.png",
   "detailUrl": "https://media.lottecinemavn.com/Media/Event/a5b62870de0648f49332b1e8e0eb50e6.jpg",
   "__v": 0,
-  "isMainEvent": true
+  "isMainEvent": true,
+  "noticeContent": ""
 },
 {
   "_id": {
@@ -47,7 +49,8 @@
   "homePageUrl": "https://media.lottecinemavn.com/Media/Event/271e735a3e324816b5557fe84b48d100.jpg",
   "detailUrl": "https://media.lottecinemavn.com/Media/Event/74df79e5036445708e5077e055fc0129.jpg",
   "__v": 0,
-  "isMainEvent": true
+  "isMainEvent": true,
+  "noticeContent": "Số lượng có hạn"
 },
 {
   "_id": {
@@ -64,7 +67,8 @@
   "homePageUrl": "https://media.lottecinemavn.com/Media/Event/33aad542d5794329a31a7d5ea3bda641.png",
   "detailUrl": "https://media.lottecinemavn.com/Media/Event/9b2c906f80c74580ac60f40eed5d88e9.jpg",
   "__v": 0,
-  "isMainEvent": true
+  "isMainEvent": true,
+  "noticeContent": "\"<SPAN lang=VI style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-bidi-font-weight: bold; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: VI'>\\r\\n<P class=MsoNormal style=\\\"MARGIN: 6pt 0in 0pt; LINE-HEIGHT: normal\\\"><B><SPAN lang=VI style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: VI'>Hướng dẫn thực hiện<?xml:namespace prefix = \\\"o\\\" ns = \\\"urn:schemas-microsoft-com:office:office\\\" /><o:p></o:p></SPAN></B></P>\\r\\n<P class=MsoNormal style=\\\"MARGIN: 6pt 0in 0pt; LINE-HEIGHT: normal\\\"><SPAN lang=VI style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: VI'>Bước 1: Truy cập vào <B style=\\\"mso-bidi-font-weight: normal\\\"><SPAN style=\\\"COLOR: #cc00ff\\\">Momo</SPAN>&nbsp;/&nbsp;<SPAN style=\\\"COLOR: #00b0f0\\\">Zalopay</SPAN></B> / <STRONG>Vnpay</STRONG> &gt; Mục&nbsp;<B style=\\\"mso-bidi-font-weight: normal\\\">Đặt Vé Phim</B></SPAN><SPAN style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: EN-US'><o:p></o:p></SPAN></P>\\r\\n<P class=MsoNormal style=\\\"MARGIN: 6pt 0in 0pt; LINE-HEIGHT: normal\\\"><SPAN lang=VI style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: VI'>Bước 2: Chọn Rạp Lotte Cinema và chọn suất chiếu phù hợp<o:p></o:p></SPAN></P>\\r\\n<P class=MsoNormal style=\\\"MARGIN: 6pt 0in 0pt; LINE-HEIGHT: normal\\\"><SPAN lang=VI style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: VI'>Bước 3: Chọn thanh toán. Khách hàng vui lòng chọn thẻ quà tặng tại mục “Chọn hoặc nhập mã ưu đãi” chọn voucher hoặc nhập mã và áp dụng (nếu có).<o:p></o:p></SPAN></P>\\r\\n<P class=MsoNormal style=\\\"MARGIN: 6pt 0in 0pt; LINE-HEIGHT: normal\\\"><SPAN lang=VI style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: VI'>Bước 4: Vé giảm sẽ được áp dụng nếu bạn thỏa điều kiện khi chuyển sang màn hình thanh toán của Momo / Zalopay / Vnpay.<o:p></o:p></SPAN></P>\\r\\n<P class=MsoNormal style=\\\"MARGIN: 6pt 0in 0pt; LINE-HEIGHT: normal\\\"><SPAN lang=VI style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: VI'>Bước 5: Kiểm tra thông tin và xác nhận thanh toán.</SPAN><SPAN lang=VI style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: EN-US'> </SPAN><SPAN lang=VI style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: VI'>Quý khách vui lòng kiểm tra giá vé ưu đãi trước khi tiến hành thanh toán</SPAN><SPAN style='FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: EN-US'><o:p></o:p></SPAN></P>\\r\\n<P class=MsoNormal style=\\\"MARGIN: 6pt 0in 0pt; LINE-HEIGHT: normal\\\"><SPAN lang=VI style='FONT-SIZE: 11pt; FONT-FAMILY: \\\"Times New Roman\\\",\\\"serif\\\"; LINE-HEIGHT: 115%; mso-fareast-font-family: \\\"Times New Roman\\\"; mso-ansi-language: VI; mso-fareast-language: EN-US; mso-bidi-language: AR-SA'>*Lưu ý: Số lượng có hạn, ưu tiên khách mua vé trước nhận ưu đãi trước </SPAN></SPAN></P>"
 },
 {
   "_id": {
@@ -81,7 +85,8 @@
   "homePageUrl": "https://media.lottecinemavn.com/Media/Event/a877bc74fc5142b383a73bc928e12e63.jpg",
   "detailUrl": "https://media.lottecinemavn.com/Media/Event/54846cfaea22414ea6c1ddd373edbe62.jpg",
   "__v": 0,
-  "isMainEvent": false
+  "isMainEvent": false,
+  "noticeContent": ""
 },
 {
   "_id": {
@@ -98,5 +103,6 @@
   "homePageUrl": "https://media.lottecinemavn.com/Media/Event/63aaeef749054dad8df19fb3047bc031.png",
   "detailUrl": "https://media.lottecinemavn.com/Media/Event/c764f8c0f5a44f238be7263c6933abb4.png",
   "isMainEvent": false,
-  "__v": 0
+  "__v": 0,
+  "noticeContent": "\"<P>- Giá vé thành viên U22, HSSV có sự khác nhau tại từng cụm rạp<BR>- Giá vé U22/HSSV không áp dụng cho phòng chiếu Superplex, Cine Comfort, Charlotte<BR>- Giá vé HSSV chưa bao gồm phụ thu ghế VIP, Cine Couple<BR>- Quý khách vui lòng xuất trình CCCD / Thẻ HSSV / GPLX / Thẻ thư viện còn hiệu lực... để chứng minh độ tuổi mua vé hoặc soát vé vào rạp.</P>"
 }]
