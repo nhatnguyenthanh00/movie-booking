@@ -17,7 +17,7 @@ const getShowtimeByDay = async (req, res) => {
         const showtimes = await Showtime.find({
             movie: movieId,
             startTime: { $gte: startOfDay, $lte: endOfDay }
-        }).populate('room').populate('movie');
+        }).populate('room').populate('seats.seatId','seatNumber type status -_id');
 
         res.status(200).json(showtimes);
     } catch (error) {

@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "67bcac4150a5459decb28b05"
+  },
+  "movie": {
+    "$oid": "67b8197ca7c956305cb7fd7b"
+  },
+  "user": {
+    "$oid": "67bca93ade85c3be0c4158af"
+  },
+  "rating": 4,
+  "comment": "Phim không có quá nhiều plot twist, hành động tạm ổn",
+  "createdAt": {
+    "$date": "2025-02-24T17:28:33.051Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67bcae1e0408977520aa8f99"
+  },
+  "movie": {
+    "$oid": "67b8197ca7c956305cb7fd7b"
+  },
+  "user": {
+    "$oid": "67bca1a4bb766c86b09ac3bb"
+  },
+  "rating": 5,
+  "comment": "Thông não chi thuật của Cap là tốt",
+  "createdAt": {
+    "$date": "2025-02-24T17:36:30.259Z"
+  },
+  "__v": 0
+}]

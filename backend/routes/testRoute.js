@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Room = require("../models/Room");
 const Seat = require("../models/Seat");
+const Movie = require("../models/Movie");
 router.post("/add-seat/:id", (req, res) => {
   try {
     const roomId = req.params.id;
@@ -30,5 +31,26 @@ router.post("/add-seat/:id", (req, res) => {
   }
 });
 
+router.post("/update-movie-end-date", async (req, res) => {
+  try {
+    const movies = await Movie.find({ endDate: { $exists: false } });
+
+    for (const movie of movies) {
+      if (movie.releaseDate) {
+        movie.endDate = new Date(
+          movie.releaseDate.getTime() + 2 * 30 * 24 * 60 * 60 * 1000
+        ); // Thêm 2 tháng
+        await movie.save();
+        console.log(`Updated endDate for movie: ${movie.title}`);
+      } else {
+        console.log(`Skipping movie: ${movie.title}, no releaseDate`);
+      }
+    }
+    res.status(200).json({ message: "Updated endDate for all movies" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
 
 module.exports = router;
