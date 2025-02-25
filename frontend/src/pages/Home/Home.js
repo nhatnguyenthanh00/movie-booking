@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { get5NewMovies} from "../../api/MovieApi";
-import { get8NewEvents} from "../../api/EventApi";
+import eventApi from "../../api/eventApi";
 
 const Home = () => {
   const [listMovies, setListMovies] = useState([])
@@ -50,9 +50,9 @@ const Home = () => {
 
     const getData = async () => {
       const movies = await get5NewMovies();
-      const events = await get8NewEvents();
+      const events = await eventApi.getAll();
       setListMovies(movies);
-      setListEvents(events);
+      setListEvents(events.data);
     };
 
     getData();
