@@ -1,13 +1,18 @@
-import axios from 'axios';
+import api from "./baseApi";
 
-const API_BASE_URL = 'http://localhost:9999';
-
-export const get8NewEvents = async () => {
-    try {
-        const response = await axios.get(`${API_BASE_URL}/event/`);
-        return response.data.sort((a, b) => new Date(b.startDate) - new Date(a.startDate)).slice(0, 8);
-    } catch (error) {
-        console.error("Error fetching events", error);
-        return [];
-    }
+const eventApi = {
+  // Get all events
+  getAll: async () => {
+    const url = `/event`;
+    const response = await api.get(url);
+    return response;
+  },
+  getEventById: async (id) => {
+    console.log("day nauy", id);
+    const url = `/event/${id}`;
+    const response = await api.get(url);
+    return response;
+  },
 };
+
+export default eventApi;
