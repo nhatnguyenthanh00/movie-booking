@@ -11,7 +11,8 @@ const eventSchema = new mongoose.Schema({
     },
     homePageUrl: { type: String },
     detailUrl: { type: String, required: true },
-    isMainEvent: { type: Boolean, default: false }
+    isMainEvent: { type: Boolean, default: false },
+    noticeContent: { type: String, default: '' },
 });
 
 module.exports = mongoose.model('Event', eventSchema);
