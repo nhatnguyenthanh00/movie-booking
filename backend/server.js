@@ -7,6 +7,7 @@ const authRoutes = require("./routes/authRoute");
 const testRoutes = require("./routes/testRoute");
 const movieRoutes = require("./routes/movieRoute");
 const eventRoutes = require("./routes/eventRoute");
+const reviewRoutes = require("./routes/reviewRoute");
 const {checkAuthorize} = require("./middleware/authMiddleware");
 const DB = require("./config/db");
 
@@ -27,6 +28,7 @@ app.use("/auth", authRoutes);
 app.use("/test", testRoutes);
 app.use("/movie", movieRoutes); 
 app.use("/event", eventRoutes);
+app.use("/review", reviewRoutes);
 
 app.get("/admin-only", checkAuthorize(["admin"]), (req, res) => {
   res.json({ message: "Admin only route" });

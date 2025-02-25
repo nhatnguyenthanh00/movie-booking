@@ -1,0 +1,1864 @@
+[{
+  "_id": {
+    "$oid": "67b8348bf5156ba04037e49a"
+  },
+  "movie": {
+    "$oid": "67b8197ca7c956305cb7fd7b"
+  },
+  "room": {
+    "$oid": "67b70973fa6dcee6ff3c3d3c"
+  },
+  "startTime": {
+    "$date": "2025-03-01T08:00:00.000Z"
+  },
+  "type": "2D",
+  "pricing": {
+    "normal": 100000,
+    "vip": 130000
+  },
+  "status": "open",
+  "endTime": {
+    "$date": "2025-03-01T10:30:00.000Z"
+  },
+  "seats": [
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5d7"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e49c"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5d8"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e49d"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5d9"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e49e"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5da"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e49f"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5db"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4a0"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5dc"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4a1"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5dd"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4a2"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5de"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4a3"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5df"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4a4"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e0"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4a5"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e1"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4a6"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e2"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4a7"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e3"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4a8"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e4"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4a9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e5"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4aa"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e6"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ab"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e7"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ac"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e8"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ad"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e9"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ae"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ea"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4af"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5eb"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4b0"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ec"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4b1"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ed"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4b2"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ee"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4b3"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ef"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4b4"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f0"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4b5"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f1"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4b6"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f2"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4b7"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f3"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4b8"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f4"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4b9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f5"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ba"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f6"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4bb"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f7"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4bc"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f8"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4bd"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f9"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4be"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5fa"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4bf"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5fb"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4c0"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5fc"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4c1"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5fd"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4c2"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5fe"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4c3"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ff"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4c4"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da600"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4c5"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da601"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4c6"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da602"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4c7"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da603"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4c8"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da604"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4c9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da605"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ca"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da606"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4cb"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da607"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4cc"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da608"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4cd"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da609"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ce"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60a"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4cf"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60b"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4d0"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60c"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4d1"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60d"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4d2"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60e"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4d3"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60f"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4d4"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da610"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4d5"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da611"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4d6"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da612"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4d7"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da613"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4d8"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da614"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4d9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da615"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4da"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da616"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4db"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da617"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4dc"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da618"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4dd"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da619"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4de"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61a"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4df"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61b"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4e0"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61c"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4e1"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61d"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4e2"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61e"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4e3"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61f"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4e4"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da620"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4e5"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da621"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4e6"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da622"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4e7"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da623"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4e8"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da624"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4e9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da625"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ea"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da626"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4eb"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da627"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ec"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da628"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ed"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da629"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ee"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62a"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ef"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62b"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4f0"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62c"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4f1"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62d"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4f2"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62e"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4f3"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62f"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4f4"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da630"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4f5"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da631"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4f6"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da632"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4f7"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da633"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4f8"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da634"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4f9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da635"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4fa"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da636"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4fb"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da637"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4fc"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da638"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4fd"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da639"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4fe"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da63a"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8348bf5156ba04037e4ff"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-02-21T08:08:43.132Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-21T08:08:43.132Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67b8422c0e2c56c5dff7cdb5"
+  },
+  "movie": {
+    "$oid": "67b8197ca7c956305cb7fd7b"
+  },
+  "room": {
+    "$oid": "67b70973fa6dcee6ff3c3d3c"
+  },
+  "startTime": {
+    "$date": "2025-03-01T10:30:00.000Z"
+  },
+  "endTime": {
+    "$date": "2025-03-01T12:30:00.000Z"
+  },
+  "type": "2D",
+  "pricing": {
+    "normal": 100000,
+    "vip": 130000
+  },
+  "status": "open",
+  "seats": [
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5d7"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdb9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5d8"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdba"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5d9"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdbb"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5da"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdbc"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5db"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdbd"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5dc"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdbe"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5dd"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdbf"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5de"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdc0"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5df"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdc1"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e0"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdc2"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e1"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdc3"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e2"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdc4"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e3"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdc5"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e4"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdc6"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e5"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdc7"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e6"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdc8"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e7"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdc9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e8"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdca"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5e9"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdcb"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ea"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdcc"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5eb"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdcd"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ec"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdce"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ed"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdcf"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ee"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdd0"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ef"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdd1"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f0"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdd2"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f1"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdd3"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f2"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdd4"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f3"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdd5"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f4"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdd6"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f5"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdd7"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f6"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdd8"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f7"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdd9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f8"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdda"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5f9"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cddb"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5fa"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cddc"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5fb"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cddd"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5fc"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdde"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5fd"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cddf"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5fe"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cde0"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da5ff"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cde1"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da600"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cde2"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da601"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cde3"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da602"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cde4"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da603"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cde5"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da604"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cde6"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da605"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cde7"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da606"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cde8"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da607"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cde9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da608"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdea"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da609"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdeb"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60a"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdec"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60b"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cded"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60c"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdee"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60d"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdef"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60e"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdf0"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da60f"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdf1"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da610"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdf2"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da611"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdf3"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da612"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdf4"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da613"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdf5"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da614"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdf6"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da615"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdf7"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da616"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdf8"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da617"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdf9"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da618"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdfa"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da619"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdfb"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61a"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdfc"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61b"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdfd"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61c"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdfe"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61d"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7cdff"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61e"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce00"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da61f"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce01"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da620"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce02"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da621"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce03"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da622"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce04"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da623"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce05"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da624"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce06"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da625"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce07"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da626"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce08"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da627"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce09"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da628"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce0a"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da629"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce0b"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62a"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce0c"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62b"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce0d"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62c"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce0e"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62d"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce0f"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62e"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce10"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da62f"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce11"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da630"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce12"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da631"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce13"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da632"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce14"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da633"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce15"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da634"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce16"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da635"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce17"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da636"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce18"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da637"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce19"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da638"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce1a"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da639"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce1b"
+      }
+    },
+    {
+      "seatId": {
+        "$oid": "67b7f195224cbb23775da63a"
+      },
+      "status": "available",
+      "_id": {
+        "$oid": "67b8422c0e2c56c5dff7ce1c"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-02-21T09:06:52.310Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-21T09:06:52.310Z"
+  },
+  "__v": 0
+}]
