@@ -6,6 +6,8 @@ router.get("/:movieId/showtime", showtimeController.getShowtimeByDay);
 
 router.post("/:movieId/showtime", showtimeController.addShowtime);
 
-router.get("/poster", movieController.getAllMoviePoster);
+router.get("/main", movieController.getAllMoviePoster);
+
+router.get("/detail/:movieId", movieController.getMovieDetailById);
 
 module.exports = router;

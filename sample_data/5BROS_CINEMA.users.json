@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "67b5a05feb05a097ad361609"
+  },
+  "name": "Nguyễn Thành Nhật",
+  "email": "thanhdeapool@gmail.com",
+  "password": "$2a$10$WahU62b6FZEQBf.nfJfTTOQyKDp25w.T1lbXlGi081FAucUVdxeDS",
+  "phone": "0868524122",
+  "role": "user",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67bca1a4bb766c86b09ac3bb"
+  },
+  "name": "Nguyễn Thành Nhật",
+  "email": "nhatnthe176486@fpt.edu.vn",
+  "password": "$2a$10$Zrpu81K9.JROQpyPhmRaO.878Ly8fmTkEBGV7rr5XQlk61x37Pofm",
+  "phone": "0868524122",
+  "role": "user",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67bca93ade85c3be0c4158af"
+  },
+  "name": "KKang 88",
+  "email": "noname.ssg104@gmail.com",
+  "password": "$2a$10$1vHxYus203/7tY5MkL6VD.hOd.9E.YQ/882JjuSof7fOCrv58jbwm",
+  "phone": "0868524122",
+  "role": "user",
+  "__v": 0
+}]
