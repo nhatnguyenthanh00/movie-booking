@@ -1,32 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./promotion.css";
+import api from "../../api/eventApi.js";
+import { Link, useParams } from "react-router-dom";
 export default function PromotionDetail() {
+  const { id } = useParams();
+  const [eventDetail, setEventDetail] = useState([]);
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await api.getEventById(id);
+        console.log("Events: ", res);
+        setEventDetail(res.data);
+      } catch (error) {
+        console.log("Failed to fetch events: ", error);
+      }
+    };
+    fetchEvents();
+  }, []);
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleDateString("en-GB"); // "01/01/2025"
+    console.log(formattedDate);
+    return formattedDate;
+  };
   return (
     <div className="body pt-5">
       <div className="container">
         <div className="container-promotion-detail">
           <div>
-            <h3 className="sub_tit">BÁNH MÌ QUE NÓNG GIÒN</h3>
+            <h3 className="sub_tit">{eventDetail.title}</h3>
             <div>
-              <img
-                src="https://media.lottecinemavn.com/Media/Event/ff450d1e3b454066baffc7bbeabffe46.jpg"
-                alt=""
-              />
+              <img src={eventDetail.detailUrl} alt="" />
               <div className="event_release">
-                <div>
-                  Ngon giòn nóng hổi từ lớp vỏ.... đầy đặn đẫm xốt trong lớp
-                  nhân, bánh mì que đã sẵn sàng phục vụ quý khách với 03 hương
-                  vị:
-                </div>
-                <div>Sản phẩm có bán lẻ hoặc theo combo bắp nước đi kèm:</div>
+                <div
+                  dangerouslySetInnerHTML={{ __html: eventDetail.description }}
+                />
               </div>
             </div>
           </div>
         </div>
         <div className="d-flex justify-content-center m-3">
-          <button className="btn btn-dark no-radius btn-search">
+          <Link to="/promotion" className="btn btn-dark no-radius btn-search">
             Danh sách
-          </button>
+          </Link>
         </div>
       </div>
     </div>
