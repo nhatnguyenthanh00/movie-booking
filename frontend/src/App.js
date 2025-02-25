@@ -8,6 +8,9 @@ import Home from "./pages/Home/Home";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from "./components/Footer/Footer";
+
 import Promotion from "./pages/Promotion/Promotion";
 import PromotionDetail from "./pages/Promotion/PromotionDetail";
 
@@ -39,6 +42,7 @@ const App = () => {
             }
           />
         </Routes>
+        <Footer/>
       </Router>
     </AuthProvider>
   );
