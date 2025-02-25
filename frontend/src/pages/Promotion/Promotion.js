@@ -1,7 +1,7 @@
 import React from "react";
 import "./promotion.css";
 export default function Promotion() {
-  //hoang
+  //hoanghoanghoang
   return (
     <>
       <div className="container ">
