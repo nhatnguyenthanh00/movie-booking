@@ -13,7 +13,12 @@ import Footer from "./components/Footer/Footer";
 
 import Promotion from "./pages/Promotion/Promotion";
 import PromotionDetail from "./pages/Promotion/PromotionDetail";
+
 import MovieDetail from "./pages/Movie/DetailMovie";
+
+import SignUp from "./pages/Login/Signup";
+import VerifyOtp from "./pages/Login/verifyOtp";
+
 
 const App = () => {
   return (
@@ -24,9 +29,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/detail/:movieId" element={<MovieDetail />} />
           <Route path="/promotion" element={<Promotion />} />
-          {/* <Route path="/promotion/:id" element={<Promotion />} /> */}
-          <Route path="/promotionDetail" element={<PromotionDetail />} />
+          <Route path="/promotion/:id" element={<PromotionDetail />} />
+
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/verify-otp" element={<VerifyOtp />} />
           <Route
             path="/dashboard"
             element={

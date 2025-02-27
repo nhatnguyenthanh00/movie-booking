@@ -29,8 +29,8 @@ const Header = () => {
         </div>
         {user ? (
           <>
-            <span>Welcome, {user.userId} ({user.role})</span>
-            <button onClick={logout}>LOGIN</button>
+            <span>Welcome, {user.name}</span>
+            <button onClick={logout}>LOGOUT</button>
           </>
         ) : (
           <Link to="/login">LOGIN</Link>

@@ -129,7 +129,7 @@ const login = async (req, res) => {
       return res.status(400).json({ message: "Mật khẩu không đúng!" });
 
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      { id: user._id},
       process.env.JWT_SECRET,
       {
         expiresIn: process.env.JWT_EXPIRES_IN,
@@ -157,7 +157,9 @@ const getMe = async (req, res) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    res.json({ userId: decoded.id, role: decoded.role });
+    const userId = decoded.id;
+    const user = await User.findById(userId).select("-password -__v");
+    res.json(user);
   } catch (error) {
     console.error(error);
     res.status(401).json({ message: "Invalid token" });

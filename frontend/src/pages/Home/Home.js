@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
+
 import { get5NewMovies } from "../../api/MovieApi";
 import { get8NewEvents } from "../../api/EventApi";
 import { Link } from "react-router-dom"; // Import Link
+
+
+import eventApi from "../../api/eventApi";
+
+
 const Home = () => {
   const [listMovies, setListMovies] = useState([]);
   const [listEvents, setListEvents] = useState([]);
@@ -49,9 +55,9 @@ const Home = () => {
 
     const getData = async () => {
       const movies = await get5NewMovies();
-      const events = await get8NewEvents();
+      const events = await eventApi.getAll();
       setListMovies(movies);
-      setListEvents(events);
+      setListEvents(events.data);
     };
 
     getData();
@@ -94,9 +100,7 @@ const Home = () => {
             <div className="overlay">
               <button className="btn-ticket">Đặt vé</button>
               {/* Thay thế nút "Xem chi tiết" bằng Link */}
-              <Link to={`/detail/${movie._id}`} className="btn-detail">
-                Xem chi tiết
-              </Link>
+             
             </div>
           </div>
         ))}
