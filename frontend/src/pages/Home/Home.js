@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 
-import { get5NewMovies } from "../../api/MovieApi";
-import { get8NewEvents } from "../../api/EventApi";
-import { Link } from "react-router-dom"; // Import Link
-
-
+import { get5NewMovies, get8NewEvents } from "../../api/MovieApi";
 import eventApi from "../../api/eventApi";
 
+import { Link } from "react-router-dom"; // Import Link
 
 const Home = () => {
   const [listMovies, setListMovies] = useState([]);
@@ -100,7 +97,9 @@ const Home = () => {
             <div className="overlay">
               <button className="btn-ticket">Đặt vé</button>
               {/* Thay thế nút "Xem chi tiết" bằng Link */}
-             
+              <Link to={`/detail/${movie._id}`} className="btn-detail">
+                Xem chi tiết
+              </Link>
             </div>
           </div>
         ))}

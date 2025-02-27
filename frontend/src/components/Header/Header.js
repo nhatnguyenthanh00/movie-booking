@@ -6,7 +6,7 @@ const Header = () => {
 
   return (
     <nav className="header">
-      <div className="logo" >
+      <div className="logo">
         <img src="../cinema-bg.png"></img>
       </div>
       <div className="nav-links">
@@ -17,7 +17,7 @@ const Header = () => {
           <Link to="/">MOVIES</Link>
         </div>
         <div>
-          <Link to="/">EVENTS</Link>
+          <Link to="/promotion">EVENTS</Link>
         </div>
         <div>
           <Link to="/">NOTIFICATIONS</Link>
