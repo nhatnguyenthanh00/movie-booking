@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const otpGenerator = require("otp-generator");
 const sendEmail = require("../utils/sendMail");
+const verifyEmail = require("../utils/verifyMail");
 let otpStore = {};
 
 const sendOtp = async (req, res) => {
@@ -34,15 +35,16 @@ const sendOtp = async (req, res) => {
     const expiresAt = Date.now() + 5 * 60 * 1000; // OTP hết hạn sau 5 phút
     if (!otpStore[email]) otpStore[email] = {};
     otpStore[email][type] = { otp, isVerified: false, expiresAt }; // Lưu OTP kèm thời gian hết hạn
-    await sendEmail(email, otp, type);
+    if (!(await verifyEmail(email))) {
+      return res.status(400).json({ message: "Email không tồn tại!" });
+    }
 
-    res
-      .status(200)
-      .json({
-        message: `OTP đã được gửi để ${
-          type === "register" ? "đăng ký" : "đặt lại mật khẩu"
-        }!`,
-      });
+    try {
+      await sendEmail(email, otp, type);
+    } catch (error) {
+      res.status(500).json({ message: "Không thể gửi email. Vui lòng thử lại!" });
+    }
+    res.status(200).json({ message: `OTP đã được gửi để ${type === "register" ? "đăng ký" : "đặt lại mật khẩu"}!` });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Lỗi hệ thống!" });
