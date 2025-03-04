@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const authController = require("../controllers/AuthController");
-
+const { checkAuthorize } = require("../middleware/authMiddleware");
 // Xử lý OTP
 router.post("/send-otp", authController.sendOtp);
 router.post("/verify-otp", authController.verifyOtp);
@@ -19,5 +19,8 @@ router.get("/me", authController.getMe);
 
 // Rest mật khẩu
 router.post("/reset-password", authController.resetPassword);
+
+// Thay đổi mật khẩu
+router.post("/change-password", checkAuthorize(["user"]), authController.changePassword);
 
 module.exports = router;
