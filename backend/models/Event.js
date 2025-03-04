@@ -7,9 +7,14 @@ const eventSchema = new mongoose.Schema({
     endTime: {
         type: Date,
         required: true,
-        validator: function (value) { return this.startTime < value; } 
+        validate: {
+            validator: function (value) {
+                return this.startTime < value;
+            },
+            message: "endTime phải lớn hơn startTime!"
+        }
     },
-    homePageUrl: { type: String },
+    homePageUrl: { type: String, required: true },
     detailUrl: { type: String, required: true },
     isMainEvent: { type: Boolean, default: false },
     noticeContent: { type: String, default: '' },

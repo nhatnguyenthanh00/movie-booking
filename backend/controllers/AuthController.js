@@ -130,6 +130,10 @@ const login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Mật khẩu không đúng!" });
 
+    if (!user.status) {
+      return res.status(400).json({ message: "Tài khoản của bạn đã bị khóa!" });
+    }
+
     const token = jwt.sign(
       { id: user._id},
       process.env.JWT_SECRET,
@@ -190,6 +194,23 @@ const resetPassword = async (req, res) => {
     res.status(500).json({ message: "Lỗi hệ thống!" });
   }
 };
+
+const changePassword = async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+  try {
+    const user = req.user;
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+    if (!isMatch) return res.status(400).json({ message: "Mật khẩu cũ không đúng!" });
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword;
+    await user.save();
+    
+    res.status(200).json({ message: "Thay đổi mật khẩu thành công!" });
+  } catch (error) {
+    res.status(500).json({ message: "Lỗi hệ thống!" });
+  }
+};
 const authController = {
   sendOtp,
   verifyOtp,
@@ -198,6 +219,7 @@ const authController = {
   logout,
   getMe,
   resetPassword,
+  changePassword,
 };
 
 module.exports = authController;
