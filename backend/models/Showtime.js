@@ -52,7 +52,9 @@ const showtimeSchema = new mongoose.Schema({
         enum: ['open','closed'],
         default: 'open'
     }
-}, {timestamps : true});
+}, {
+    timestamps : true,
+});
 
 showtimeSchema.pre('validate', async function (next) {
     try {

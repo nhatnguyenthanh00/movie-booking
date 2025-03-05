@@ -14,18 +14,26 @@ const getMovieDetailById = async (req, res) => {
         const movie = await Movie.findById(req.params.movieId);
         if(!movie) {
             return res.status(404).json({message: 'Movie not found'});
-        }
-        const reviews = await Review.find({movie: movie._id})
-            .populate('user', 'email -_id')
-            .select('-__v -_id -movie');
-
-        const averageRating = reviews.length > 0 
-            ? (reviews.reduce((total, review) => total + review.rating, 0) / reviews.length ).toFixed(1)
-            : "0.0";        
-        res.status(200).json({movie, reviews, averageRating});
+        }     
+        res.status(200).json(movie);
     } catch (error) {
         res.status(500).json(error);
     }
 }
-const movieController = {getAllMoviePoster, getMovieDetailById};
+
+const getReviewsByMovieId = async (req, res) => {
+    try {
+        const movie = await Movie.findById(req.params.movieId);
+        if(!movie) {
+            return res.status(404).json({message: 'Movie not found'});
+        }
+        const reviews = await Review.find({movie: movie._id})
+            .populate('user', 'email -_id')
+            .select('-__v -movie');
+        res.status(200).json(reviews);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+const movieController = {getAllMoviePoster, getMovieDetailById, getReviewsByMovieId};
 module.exports = movieController;

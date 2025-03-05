@@ -19,42 +19,36 @@ const getShowtimeByDay = async (req, res) => {
             startTime: { $gte: startOfDay, $lte: endOfDay }
         }).populate('room').populate('seats.seatId','seatNumber type status -_id');
 
-        res.status(200).json(showtimes);
+        const formattedShowtimes = showtimes.map(showtime => {
+            const showtimeObject = showtime.toObject();
+            showtimeObject.seatSummary = {
+                total: showtimeObject.seats.length,
+                booked: showtimeObject.seats.filter(seat => seat.status === 'booked').length
+            };
+            delete showtimeObject.seats;
+        
+            return showtimeObject;
+        });
+
+        res.status(200).json(formattedShowtimes);
     } catch (error) {
         res.status(500).json({ message: 'Lỗi server', error });
     }
 };
 
-const addShowtime = async (req, res) => {
-    const { movieId } = req.params;
-    const { startTime, endTime,roomId, type, pricing, } = req.body;
-
+const getShowtimeById = async (req, res) => {
     try {
-        const showtime = await Showtime.create({
-            movie: movieId,
-            startTime,
-            endTime,
-            room: roomId,
-            type,
-            pricing,
-        });
-
-        res.status(201).json(showtime);
+        const showtime = await Showtime.findById(req.params.showtimeId).populate('room').populate('seats.seatId','seatNumber type status -_id');
+        if (!showtime) return res.status(404).json({ error: "Showtime not found" });
+        res.status(200).json(showtime);
     } catch (error) {
-        console.log(error);
-        if (error.name === 'ValidationError') {
-            // Nếu là lỗi validation của Mongoose, trả về chi tiết lỗi
-            return res.status(400).json({ message: 'Validation Error', errors: error.errors });
-        }
-
-        // Nếu là lỗi khác, trả về lỗi server
-        res.status(500).json({ message: 'Lỗi server', error: error.message });
+        res.status(500).json({ message: 'Lỗi server', error });
     }
 };
 
 
 const showtimeController = {
     getShowtimeByDay,
-    addShowtime
+    getShowtimeById
 };
 module.exports = showtimeController;
