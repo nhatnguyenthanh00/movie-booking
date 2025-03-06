@@ -13,6 +13,7 @@ export const get5NewMovies = async () => {
     return [];
   }
 };
+
 export const getMovieDetail = async (movieId) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/movie/detail/${movieId}`);
@@ -20,5 +21,21 @@ export const getMovieDetail = async (movieId) => {
   } catch (error) {
     console.error("Error fetching movie detail", error);
     return null;
+  }
+};
+
+export const addReview = async (movieId, reviewData) => {
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}/review/add-new`,
+      reviewData,
+      {
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error adding review", error);
+    throw error;
   }
 };
