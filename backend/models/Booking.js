@@ -22,11 +22,6 @@ const bookingSchema = new mongoose.Schema({
         enum: ['pending','paid','cancelled'],
         default: 'pending'
     },
-    paymentMethod: {
-        type: String,
-        enum: ['online','offline'],
-        required: true
-    }
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model("Booking",bookingSchema);
