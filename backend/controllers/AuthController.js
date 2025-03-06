@@ -42,9 +42,17 @@ const sendOtp = async (req, res) => {
     try {
       await sendEmail(email, otp, type);
     } catch (error) {
-      res.status(500).json({ message: "Không thể gửi email. Vui lòng thử lại!" });
+      res
+        .status(500)
+        .json({ message: "Không thể gửi email. Vui lòng thử lại!" });
     }
-    res.status(200).json({ message: `OTP đã được gửi để ${type === "register" ? "đăng ký" : "đặt lại mật khẩu"}!` });
+    res
+      .status(200)
+      .json({
+        message: `OTP đã được gửi để ${
+          type === "register" ? "đăng ký" : "đặt lại mật khẩu"
+        }!`,
+      });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Lỗi hệ thống!" });
@@ -134,13 +142,9 @@ const login = async (req, res) => {
       return res.status(400).json({ message: "Tài khoản của bạn đã bị khóa!" });
     }
 
-    const token = jwt.sign(
-      { id: user._id},
-      process.env.JWT_SECRET,
-      {
-        expiresIn: process.env.JWT_EXPIRES_IN,
-      }
-    );
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRES_IN,
+    });
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
@@ -187,7 +191,7 @@ const resetPassword = async (req, res) => {
 
   // Cập nhật mật khẩu mới
   const hashedPassword = await bcrypt.hash(newPassword, 10);
-  try{
+  try {
     await User.updateOne({ email }, { password: hashedPassword });
     res.status(200).json({ message: "Mật khẩu đã được cập nhật thành công!" });
   } catch (error) {
@@ -200,12 +204,13 @@ const changePassword = async (req, res) => {
   try {
     const user = req.user;
     const isMatch = await bcrypt.compare(oldPassword, user.password);
-    if (!isMatch) return res.status(400).json({ message: "Mật khẩu cũ không đúng!" });
+    if (!isMatch)
+      return res.status(400).json({ message: "Mật khẩu cũ không đúng!" });
 
     const hashedPassword = await bcrypt.hash(newPassword, 10);
     user.password = hashedPassword;
     await user.save();
-    
+
     res.status(200).json({ message: "Thay đổi mật khẩu thành công!" });
   } catch (error) {
     res.status(500).json({ message: "Lỗi hệ thống!" });

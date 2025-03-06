@@ -18,7 +18,7 @@ import MovieDetail from "./pages/Movie/DetailMovie";
 
 import SignUp from "./pages/Login/Signup";
 import VerifyOtp from "./pages/Login/verifyOtp";
-
+import Showtime from "./pages/Movie/Showtime";
 
 const App = () => {
   return (
@@ -28,9 +28,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/detail/:movieId" element={<MovieDetail />} />
+          <Route path="/showtime/:movieId" element={<Showtime />} />
           <Route path="/promotion" element={<Promotion />} />
           <Route path="/promotion/:id" element={<PromotionDetail />} />
-
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<SignUp />} />
           <Route path="/verify-otp" element={<VerifyOtp />} />

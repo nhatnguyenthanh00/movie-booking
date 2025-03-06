@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Container, Row, Col } from "react-bootstrap";
-import { getMovieDetail } from "../../api/MovieApi";
+import { Button, Container, Row, Col, Form } from "react-bootstrap";
+import { getMovieDetail, addReview } from "../../api/MovieApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./MovieDetail.css";
-
+import { Link } from "react-router-dom";
 const MovieDetail = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [showTrailer, setShowTrailer] = useState(false);
+  const [rating, setRating] = useState(1);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     const fetchMovieDetail = async () => {
@@ -22,9 +24,46 @@ const MovieDetail = () => {
     fetchMovieDetail();
   }, [movieId]);
 
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars.push("★");
+      } else {
+        stars.push("☆");
+      }
+    }
+    return stars.join("");
+  };
+
+  const maskEmail = (email) => {
+    const [username, domain] = email.split("@");
+    const maskedUsername =
+      username.slice(0, 2) + "*".repeat(username.length - 2);
+    return `${maskedUsername}@${domain}`;
+  };
+
+  const handleSubmitReview = async (e) => {
+    e.preventDefault();
+
+    if (!comment.trim()) {
+      alert("Vui lòng nhập bình luận trước khi gửi đánh giá.");
+      return;
+    }
+
+    try {
+      const reviewData = { rating, comment };
+      const newReview = await addReview(movieId, reviewData);
+      setReviews([...reviews, newReview]);
+      setRating(1);
+      setComment("");
+    } catch (error) {
+      console.error("Error submitting review", error);
+    }
+  };
+
   if (!movie) return <p>Loading...</p>;
 
-  // Hàm để thêm tham số autoplay vào URL trailer
   const getTrailerUrlWithAutoplay = (url) => {
     const urlObj = new URL(url);
     urlObj.searchParams.set("autoplay", "1");
@@ -38,7 +77,6 @@ const MovieDetail = () => {
         <Container>
           <Row className="justify-content-center">
             <Col md={8} className="text-center">
-              {/* Hiển thị hình ảnh poster nếu trailer chưa được phát */}
               {!showTrailer && (
                 <div
                   style={{ position: "relative", cursor: "pointer" }}
@@ -50,17 +88,14 @@ const MovieDetail = () => {
                     className="img-fluid rounded shadow"
                     style={{ maxHeight: "500px", width: "100%" }}
                   />
-                  {/* Nút play đơn giản */}
                   <div className="play-button-overlay">
                     <div className="play-button">
-                      <i className="bi bi-play play-icon"></i>{" "}
-                      {/* Sử dụng className thay vì class */}
+                      <i className="bi bi-play play-icon"></i>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Hiển thị trailer khi người dùng nhấn vào ảnh */}
               {showTrailer && (
                 <div className="ratio ratio-16x9">
                   <iframe
@@ -110,29 +145,64 @@ const MovieDetail = () => {
               <strong>Ngôn ngữ:</strong> {movie.language}
             </p>
             <p>
-              <strong>Rated:</strong> Phim dành cho khán giả từ{" "}
-              <strong>{movie.rating}</strong> tuổi trở lên
+              <strong>Rated:</strong> Phim dành cho khán giả{" "}
+              {movie.rating === "P"
+                ? "mọi lứa tuổi"
+                : `từ ${movie.rating.replace("C", "")} tuổi trở lên`}
             </p>
             <p>
               <strong>Nội dung:</strong> {movie.description}
             </p>
-            <div className="d-flex gap-3 mt-4">
-              <Button variant="danger" className="fw-bold px-4">
-                MUA VÉ
-              </Button>
-            </div>
+            <Link
+              to={`/showtime/${movie._id}`}
+              className="btn btn-primary fw-bold px-4 py-2 rounded shadow-lg text-white text-decoration-none"
+            >
+              Đặt vé
+            </Link>
           </Col>
         </Row>
       </Container>
+
+      {/* Phần 3: Đánh giá */}
       <Container className="my-5">
         <h3 className="fw-bold mb-4">Đánh giá</h3>
 
+        {/* Form thêm đánh giá */}
+        <Form onSubmit={handleSubmitReview} className="mb-5">
+          <Form.Group className="mb-3">
+            <Form.Label>Đánh giá của bạn (1-5 sao)</Form.Label>
+            <Form.Control
+              type="number"
+              min="1"
+              max="5"
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Bình luận</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Gửi đánh giá
+          </Button>
+        </Form>
+
+        {/* Hiển thị danh sách đánh giá */}
         {reviews.map((review, index) => (
-          <Row className="mb-4 border-bottom">
-            <Col md={9} key={index}>
+          <Row className="mb-4 border-bottom" key={index}>
+            <Col md={9}>
               <div>
+                {/* Hiển thị rating dưới dạng sao */}
                 <strong className="mb-2 text-muted">
-                  Đánh giá: {review.rating}/5
+                  Khách: {renderStars(review.rating)}
                 </strong>
                 <br />
                 <strong>{review.comment}</strong>
@@ -144,9 +214,10 @@ const MovieDetail = () => {
               </div>
             </Col>
 
-            <Col md={3} key={index}>
+            <Col md={3}>
               <div className="text-center">
-                <div>{review.user.email}</div>
+                {/* Che đi phần giữa của email */}
+                <div>{maskEmail(review.user.email)}</div>
               </div>
             </Col>
           </Row>

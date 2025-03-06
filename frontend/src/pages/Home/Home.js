@@ -95,8 +95,9 @@ const Home = () => {
           <div className="film-poster" key={movie._id}>
             <img className="film" src={movie.posterUrl} alt={movie.title} />
             <div className="overlay">
-              <button className="btn-ticket">Đặt vé</button>
-              {/* Thay thế nút "Xem chi tiết" bằng Link */}
+              <Link to={`/showtime/${movie._id}`} className="btn-detail">
+                Đặt vé
+              </Link>
               <Link to={`/detail/${movie._id}`} className="btn-detail">
                 Xem chi tiết
               </Link>
