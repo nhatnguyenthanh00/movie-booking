@@ -13,8 +13,7 @@ const bookingSchema = new mongoose.Schema({
     },
     seats: [
         {
-            seat: {type: mongoose.Schema.Types.ObjectId, ref: 'Seat'},
-            price: Number
+            seat: {type: mongoose.Schema.Types.ObjectId, ref: 'Seat'}
         }
     ],
     paymentStatus: {
