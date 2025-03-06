@@ -8,6 +8,8 @@ const testRoutes = require("./routes/testRoute");
 const movieRoutes = require("./routes/movieRoute");
 const eventRoutes = require("./routes/eventRoute");
 const reviewRoutes = require("./routes/reviewRoute");
+const bookingRoutes = require("./routes/bookingRoute");
+const paymentRoutes = require("./routes/paymentRoute");
 const adminRoutes = require("./routes/adminRoute");
 const {checkAuthorize} = require("./middleware/authMiddleware");
 const DB = require("./config/db");
@@ -30,6 +32,8 @@ app.use("/test", testRoutes);
 app.use("/movie", movieRoutes); 
 app.use("/event", eventRoutes);
 app.use("/review", reviewRoutes);
+app.use("/booking", bookingRoutes);
+app.use("/payment", paymentRoutes);
 app.use("/admin", checkAuthorize(["admin"]), adminRoutes);
 
 app.get("/admin-only", checkAuthorize(["admin"]), (req, res) => {
