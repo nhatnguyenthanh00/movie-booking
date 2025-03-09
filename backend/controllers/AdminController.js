@@ -127,7 +127,7 @@ const addShowtime = async (req, res) => {
             pricing,
         });
 
-        res.status(201).json(showtime);
+        res.status(201).json({message: "Showtime has been created"});
     } catch (error) {
         console.log(error);
         if (error.name === 'ValidationError') {

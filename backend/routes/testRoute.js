@@ -53,4 +53,25 @@ router.post("/update-movie-end-date", async (req, res) => {
   }
 });
 
+router.post("/delete-status-seat", async (req, res) => {
+  try {
+    const result = await Seat.updateMany({}, { $unset: { status: 1 } });
+
+    if (result.modifiedCount === 0) {
+      return res.status(400).json({
+        message: "Không có document nào bị thay đổi. Kiểm tra lại dữ liệu trong DB.",
+      });
+    }
+
+    res.status(200).json({
+      message: "Field 'status' đã bị xóa khỏi tất cả documents.",
+      modifiedCount: result.modifiedCount,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Lỗi server", error });
+  }
+});
+
+
 module.exports = router;
