@@ -9,11 +9,11 @@ router.put("/events/:id", adminController.updateEvent);
 router.delete("/events/:id", adminController.deleteEvent);
 
 router.get("/movies", adminController.getAllMovies);
+router.post("/movies", adminController.addNewMovie);
 router.put("/movies/:id", adminController.updateMovie);
 router.delete("/movies/:id", adminController.deleteMovie);
 
-router.get("/movies/:id/showtimes", adminController.getShowtimesByMovieId);
-router.post("/movies/:movieId/showtimes", adminController.addShowtime);
+router.post("/movies/:movieId/add-showtime", adminController.addShowtime);
 router.delete("/showtimes/:id", adminController.deleteShowtime);
 
 module.exports = router;

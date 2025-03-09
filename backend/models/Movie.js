@@ -17,7 +17,7 @@ const movieSchema = new mongoose.Schema({
     posterUrl: String,
     imageUrl: String,
     trailerUrl: String,
-    releaseDate: Date,
+    releaseDate: { type: Date, required: true },
     endDate: { 
         type: Date, 
         validate: {

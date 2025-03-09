@@ -68,6 +68,17 @@ const getAllMovies = async (req, res) => {
     }
 }
 
+const addNewMovie = async (req, res) => {
+    try {
+        const newMovie = new Movie(req.body);
+        await newMovie.validate(); // Kiểm tra validation trước khi lưu
+        const savedMovie = await newMovie.save();
+        res.status(201).json(savedMovie);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+};
+
 
 const updateMovie = async (req, res) => {
     try {
@@ -96,22 +107,11 @@ const deleteMovie = async (req, res) => {
         // Sau khi xóa suất chiếu, tiến hành xóa Movie
         await movie.deleteOne();
         
-        res.status(200).json({ message: "Movie and all related showtimes have been deleted" });
+        res.status(200).json({ message: "Movie has been deleted" });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 };
-
-const getShowtimesByMovieId = async (req, res) => {
-    try {
-        const movie = await Movie.findById(req.params.id);
-        if (!movie) return res.status(404).json({ error: "Movie not found" });
-        const showtimes = await Showtime.find({ movie: movie._id }).populate('room');
-        res.status(200).json(showtimes);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-}
 
 const addShowtime = async (req, res) => {
     const { movieId } = req.params;
@@ -157,9 +157,9 @@ const adminController = {
     updateEvent,
     deleteEvent,
     getAllMovies,
+    addNewMovie,
     updateMovie,
     deleteMovie,
-    getShowtimesByMovieId,
     addShowtime,
     deleteShowtime,
 };
