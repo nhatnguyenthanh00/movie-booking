@@ -7,8 +7,7 @@ const seatSchema = new mongoose.Schema({
     type: String,
     enum: ['normal','vip','couple'],
     default: 'normal',
-  },
-  status: { type: Boolean, default: true },
+  }
 });
 
 module.exports = mongoose.model("Seat", seatSchema);

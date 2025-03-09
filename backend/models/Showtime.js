@@ -38,7 +38,7 @@ const showtimeSchema = new mongoose.Schema({
     },
     seats: [
         {
-            seatId: {type: mongoose.Schema.Types.ObjectId, ref: 'Seat'},
+            seatInfo: {type: mongoose.Schema.Types.ObjectId, ref: 'Seat'},
             status: {
                 type: String,
                 enum: ['available', 'booked'],
@@ -54,6 +54,7 @@ const showtimeSchema = new mongoose.Schema({
     }
 }, {
     timestamps : true,
+    versionKey: false
 });
 
 showtimeSchema.pre('validate', async function (next) {
@@ -109,7 +110,7 @@ showtimeSchema.pre('save', async function (next) {
 
         // Gán tất cả ghế vào danh sách seats của Showtime
         this.seats = seats.map(seat => ({
-            seatId: seat._id,
+            seatInfo: seat._id,
             status: 'available'
         }));
 

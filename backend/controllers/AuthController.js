@@ -4,13 +4,16 @@ const User = require("../models/User");
 const otpGenerator = require("otp-generator");
 const sendEmail = require("../utils/sendMail");
 const verifyEmail = require("../utils/verifyMail");
+const validateUtils = require("../utils/validateInput");
 let otpStore = {};
 
 const sendOtp = async (req, res) => {
   const { type, email } = req.body;
   try {
-    if (!/[\w.-]+@[\w.-]+\.\w+/.test(email)) {
-      return res.status(400).json({ message: "Email không hợp lệ!" });
+
+    const errMsg = validateUtils.validateEmail(email);
+    if(errMsg !== null) {
+      return res.status(400).json({ message: errMsg });
     }
 
     if (!["register", "reset-password"].includes(type)) {
@@ -89,13 +92,9 @@ const verifyOtp = (req, res) => {
 const register = async (req, res) => {
   const { name, email, password, phone } = req.body;
   try {
-    const passwordRegex =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (!passwordRegex.test(password)) {
-      return res.status(400).json({
-        message:
-          "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt!",
-      });
+    const errMsg = validateUtils.validatePassword(password);
+    if(errMsg !== null) {
+      return res.status(400).json({ message: errMsg });
     }
 
     const storedOtp = otpStore[email]?.["register"];
@@ -188,6 +187,10 @@ const resetPassword = async (req, res) => {
   }
   // Xóa OTP sau khi sử dụng
   delete otpStore[email]["resetPassword"];
+  const errMsg = validateUtils.validatePassword(newPassword);
+  if(errMsg !== null) {
+    return res.status(400).json({ message: errMsg });
+  }
 
   // Cập nhật mật khẩu mới
   const hashedPassword = await bcrypt.hash(newPassword, 10);
@@ -206,6 +209,11 @@ const changePassword = async (req, res) => {
     const isMatch = await bcrypt.compare(oldPassword, user.password);
     if (!isMatch)
       return res.status(400).json({ message: "Mật khẩu cũ không đúng!" });
+
+    const errMsg = validateUtils.validatePassword(newPassword);
+    if(errMsg !== null) {
+      return res.status(400).json({ message: errMsg });
+    }
 
     const hashedPassword = await bcrypt.hash(newPassword, 10);
     user.password = hashedPassword;

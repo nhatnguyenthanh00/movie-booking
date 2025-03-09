@@ -2,7 +2,7 @@ const router = require("express").Router();
 const showtimeController = require("../controllers/ShowtimeController");
 const movieController = require("../controllers/MovieController");
 
-router.get("/:movieId/showtime-by-day", showtimeController.getShowtimeByDay);
+router.get("/:movieId/showtime-by-day", showtimeController.getAllShowtime);
 
 router.get("/showtime/:showtimeId", showtimeController.getShowtimeById);
 
