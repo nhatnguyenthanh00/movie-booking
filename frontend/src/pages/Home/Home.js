@@ -109,7 +109,7 @@ const Home = () => {
       <h1 className="m-2">Events</h1>
       <div className="list-event container mb-5">
         {listEvents.map((event) => (
-          <div className="event ">
+          <div className="event" onClick={() => window.location.href = `/promotion/${event._id}`}>
             <img src={event.homePageUrl} />
           </div>
         ))}

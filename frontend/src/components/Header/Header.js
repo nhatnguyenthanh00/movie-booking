@@ -14,13 +14,13 @@ const Header = () => {
           <Link to="/">HOME</Link>
         </div>
         <div>
-          <Link to="/">MOVIES</Link>
+          <Link to="/movies">MOVIES</Link>
         </div>
         <div>
           <Link to="/promotion">EVENTS</Link>
         </div>
         <div>
-          <Link to="/">NOTIFICATIONS</Link>
+          <Link to="/managermovies">NOTIFICATIONS</Link>
         </div>
       </div>
       <div className="auth">

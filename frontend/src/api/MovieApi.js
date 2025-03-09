@@ -39,3 +39,41 @@ export const addReview = async (movieId, reviewData) => {
     throw error;
   }
 };
+
+export const getNowPlayingMovies = async () => {
+  try {
+      const response = await axios.get(`${API_BASE_URL}/movie/main`);
+      const allMovies = response.data;
+
+      const today = new Date();
+
+      const nowPlayingMovies = allMovies.filter(movie => {
+          const releaseDate = new Date(movie.releaseDate); // Chuyển đổi sang Date object
+          return releaseDate <= today; // Chỉ lấy phim đã khởi chiếu
+      });
+
+      return nowPlayingMovies;
+  } catch (error) {
+      console.error("Error fetching now showing movies", error);
+      return [];
+  }
+};
+
+export const getUpcomingMovies = async () => {
+  try {
+      const response = await axios.get(`${API_BASE_URL}/movie/main`);
+      const allMovies = response.data;
+
+      const today = new Date();
+
+      const nowPlayingMovies = allMovies.filter(movie => {
+          const releaseDate = new Date(movie.releaseDate); // Chuyển đổi sang Date object
+          return today <= releaseDate; // Chỉ lý phim chua khởi chiếu
+      });
+
+      return nowPlayingMovies;
+  } catch (error) {
+      console.error("Error fetching now showing movies", error);
+      return [];
+  }
+};

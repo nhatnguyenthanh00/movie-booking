@@ -19,6 +19,9 @@ import MovieDetail from "./pages/Movie/DetailMovie";
 import SignUp from "./pages/Login/Signup";
 import VerifyOtp from "./pages/Login/verifyOtp";
 import Showtime from "./pages/Movie/Showtime";
+import Movies from "./pages/Movie/Movies";
+import ManagerMovies from "./pages/AdminPanel/ManagerMoives";
+
 
 const App = () => {
   return (
@@ -27,6 +30,8 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/managermovies" element={<ManagerMovies />} />
           <Route path="/detail/:movieId" element={<MovieDetail />} />
           <Route path="/showtime/:movieId" element={<Showtime />} />
           <Route path="/promotion" element={<Promotion />} />
