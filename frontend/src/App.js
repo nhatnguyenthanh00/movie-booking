@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  useLocation,
+  Route,
+} from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header/Header";
@@ -19,39 +24,58 @@ import MovieDetail from "./pages/Movie/DetailMovie";
 import SignUp from "./pages/Login/Signup";
 import VerifyOtp from "./pages/Login/verifyOtp";
 import Showtime from "./pages/Movie/Showtime";
+import HeaderAdmin from "./components/HeaderAdmin/HeaderAdmin";
+import FooterAdmin from "./components/FooterAdmin/FooterAdmin";
+import AdminEvents from "./pages/AdminPanel/AdminEvents";
+
+const Layout = ({ children }) => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
+  return (
+    <>
+      {isAdminRoute ? <HeaderAdmin /> : <Header />}
+      {children}
+      {isAdminRoute ? <FooterAdmin /> : <Footer />}
+    </>
+  );
+};
 
 const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/detail/:movieId" element={<MovieDetail />} />
-          <Route path="/showtime/:movieId" element={<Showtime />} />
-          <Route path="/promotion" element={<Promotion />} />
-          <Route path="/promotion/:id" element={<PromotionDetail />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/verify-otp" element={<VerifyOtp />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute role="user">
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute role="admin">
-                <AdminPanel />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-        <Footer />
+        <Layout>
+         
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/detail/:movieId" element={<MovieDetail />} />
+            <Route path="/showtime/:movieId" element={<Showtime />} />
+            <Route path="/promotion" element={<Promotion />} />
+            <Route path="/promotion/:id" element={<PromotionDetail />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<SignUp />} />
+            <Route path="/verify-otp" element={<VerifyOtp />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute role="user">
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute role="admin">
+                  <AdminPanel />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/admin/events" element={<AdminEvents />} />
+          </Routes>
+          
+        </Layout>
       </Router>
     </AuthProvider>
   );
