@@ -13,6 +13,23 @@ const eventApi = {
     const response = await api.get(url);
     return response;
   },
+  deleteEventById: async (id) => {
+    console.log("day nauy", id);
+    const url = `/admin/events/${id}`;
+    const response = await api.delete(url);
+    return response;
+  },
+
+  addNewEvent: async (eventData) => {
+    const url = `/admin/events`;
+    const response = await api.post(url, eventData);
+    return response;
+  },
+  updateEventById: async (id, eventData) => {
+    const url = `/admin/events/${id}`;
+    const response = await api.put(url, eventData);
+    return response;
+  },
 };
 
 export default eventApi;

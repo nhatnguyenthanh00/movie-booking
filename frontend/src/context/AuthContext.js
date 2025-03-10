@@ -26,6 +26,7 @@ export const AuthProvider = ({ children }) => {
     await api.post("/auth/login", { email, password });
     const res = await api.get("/auth/me");
     setUser(res.data);
+    return res.data; // Trả về user sau khi fetch
   };
 
   // 3️⃣ Hàm logout (Xóa cookie từ backend)

@@ -3,7 +3,7 @@ const Event = require("../models/Event");
 const getAllEvent = async (req, res) => {
   try {
     const events = await Event.find().select(
-      "homePageUrl startTime endTime _id title"
+      "homePageUrl detailUrl startTime endTime _id title isMainEvent description noticeContent"
     );
     res.status(200).json(events);
   } catch (error) {
