@@ -2,6 +2,7 @@ const User = require('../models/User');
 const Event = require('../models/Event');
 const Movie = require('../models/Movie');
 const Showtime = require('../models/Showtime');
+const Room = require('../models/Room')
 const Review = require('../models/Review');
 const getAllUsers = async (req, res) => {
     try {
@@ -150,6 +151,15 @@ const deleteShowtime = async (req, res) => {
     }
 };
 
+const getAllRoom = async (req, res) => {
+    try {
+        const rooms = await Room.find();
+        res.status(200).json(rooms);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
 const adminController = {
     getAllUsers,
     changeStatusUser,
@@ -162,5 +172,6 @@ const adminController = {
     deleteMovie,
     addShowtime,
     deleteShowtime,
+    getAllRoom
 };
 module.exports = adminController;
