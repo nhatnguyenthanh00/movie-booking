@@ -25,3 +25,14 @@ export const addShowtime = async (movieId, showtimeData) => {
     throw error;
   }
 };
+
+export const getAllShowtimeMovie = async (movieId) => {
+  try{
+    const response = await axios.get(
+      `${API_BASE_URL}/movie/${movieId}/showtime-by-day`
+    );
+    return response
+  }catch(err){
+    console.error("Error showtime", err);
+  }
+};

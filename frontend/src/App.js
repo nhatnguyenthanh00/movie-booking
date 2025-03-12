@@ -27,6 +27,10 @@ import Showtime from "./pages/Movie/Showtime";
 import HeaderAdmin from "./components/HeaderAdmin/HeaderAdmin";
 import FooterAdmin from "./components/FooterAdmin/FooterAdmin";
 import AdminEvents from "./pages/AdminPanel/AdminEvents";
+import AdminMovies from "./pages/AdminPanel/AdminMovies";
+import Movies from "./pages/Movie/Movies";
+import AdminShowTime from "./pages/AdminPanel/AdminShowTime";
+import MovieDetailAdmin from "./pages/AdminPanel/DetailMovieForAdmin";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -49,6 +53,7 @@ const App = () => {
          
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
             <Route path="/detail/:movieId" element={<MovieDetail />} />
             <Route path="/showtime/:movieId" element={<Showtime />} />
             <Route path="/promotion" element={<Promotion />} />
@@ -73,6 +78,21 @@ const App = () => {
               }
             />
             <Route path="/admin/events" element={<AdminEvents />} />
+            <Route path="/admin/movies" element={ 
+              <ProtectedRoute role="admin">
+                  <AdminMovies />
+                </ProtectedRoute>} 
+            />
+            <Route path="/admin/showTime" element={ 
+              <ProtectedRoute role="admin">
+                  <AdminShowTime />
+                </ProtectedRoute>} 
+            />
+            <Route path="/admin/detail/:movieId" element={ 
+              <ProtectedRoute role="admin">
+                  <MovieDetailAdmin />
+                </ProtectedRoute>} 
+            />
           </Routes>
           
         </Layout>
