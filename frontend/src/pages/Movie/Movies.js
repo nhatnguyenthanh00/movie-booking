@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./Home.css";
-
-import movieApi from "../../api/MovieApi.js";
-import eventApi from "../../api/eventApi";
-
+import "./Movies.css";
+import api from "../../api/MovieApi.js";
 import { Link } from "react-router-dom"; // Import Link
 
-const Home = () => {
+const Movies = () => {
   const [listMovies, setListMovies] = useState([]);
-  const [listEvents, setListEvents] = useState([]);
+  const [movieType, setMovieType] = useState("now-playing"); // Trạng thái mặc định là "Phim Đang Chiếu"
 
   useEffect(() => {
     const listImages = document.querySelector(".list-images");
@@ -16,12 +13,12 @@ const Home = () => {
     const btnLeft = document.querySelector(".btn-left");
     const btnRight = document.querySelector(".btn-right");
     let current = 0;
-
-    const handleChangeSlide = () => {
+    
+    const handleChangeSlide = () => { 
       if (current === imgs.length - 1) {
-        current = 0;
+        current = 0
         listImages.style.transform = `translateX(0px)`;
-      } else {
+      }else{
         current++;
         let width = imgs[0].offsetWidth;
         listImages.style.transform = `translateX(-${width * current}px)`;
@@ -31,44 +28,38 @@ const Home = () => {
     if (!listImages || imgs.length === 0 || !btnRight || !btnLeft) return;
 
     const interval = setInterval(() => {
-      handleChangeSlide();
+     handleChangeSlide();
     }, 4000);
 
-    btnRight.addEventListener("click", () => {
+    btnRight.addEventListener('click',() => {
       handleChangeSlide();
-    });
+    })
 
-    btnLeft.addEventListener("click", () => {
+    btnLeft.addEventListener('click',() => {
       if (current === 0) {
-        current = imgs.length - 1;
+        current = imgs.length - 1
         let width = imgs[0].offsetWidth;
         listImages.style.transform = `translateX(-${width * current}px)`;
-      } else {
+
+      }else{
         current--;
         let width = imgs[0].offsetWidth;
-        listImages.style.transform = `translateX(-${width * current}px)`; // dịch bn px so với vị trí ban đầuđầu
+        listImages.style.transform = `translateX(-${width * current}px)`;// dịch bn px so với vị trí ban đầuđầu
       }
-    });
-
+    })  
     const getData = async () => {
-      const movies = await movieApi.get5NewMovies();
-      const events = await eventApi.getAll();
+      const movies = movieType === "now-playing" ? await api.getNowPlayingMovies() : await api.get5NewMovies();
       setListMovies(movies);
-      setListEvents(events.data);
     };
 
     getData();
-
-    return () => {
-      clearInterval(interval); // Cleanup khi component unmount
-      btnRight.removeEventListener("click", handleChangeSlide);
-      btnLeft.removeEventListener("click", handleChangeSlide);
-    };
-  }, []); // Chạy 1 lần khi component mount
+  }, [movieType]); // Khi movieType thay đổi, gọi API tương ứng
 
   return (
+
+    
     <div className="home">
-      <div className="slide-show ">
+         <div className="slide-show ">
         <div className="list-images">
           <img
             src="https://files.betacorp.vn/media/images/2025/02/14/ngt-payoff-poster-1702x621-sneak-155826-140225-38.jpg"
@@ -81,23 +72,31 @@ const Home = () => {
         </div>
         <div className="btns">
           <div className="btn-left">
-            <h1>&lt;</h1>
+              <h1>&lt;</h1>
           </div>
           <div className="btn-right">
-            <h1>&gt;</h1>
+              <h1>&gt;</h1>
           </div>
         </div>
       </div>
+      {/* Nút chọn loại phim */}
+      <div className="movie-buttons">
+        <button className={movieType === "now-playing" ? "active" : ""} onClick={() => setMovieType("now-playing")}>
+          Phim Đang Chiếu
+        </button>
+        <button className={movieType === "coming-soon" ? "active" : ""} onClick={() => setMovieType("coming-soon")}>
+          Phim Sắp Chiếu
+        </button>
+      </div>
 
-      <h1 className="mt-5 mb-2">New Movies</h1>
-      <div className="list-film ">
+      <h1 className="mt-5 mb-2">{movieType === "now-playing" ? "Phim Đang Chiếu" : "Phim Sắp Chiếu"}</h1>
+
+      <div className="list-film">
         {listMovies.map((movie) => (
-          <div className="film-poster" key={movie._id}>
+          <div className="film-poster" key={movie.id}>
             <img className="film" src={movie.posterUrl} alt={movie.title} />
             <div className="overlay">
-              <Link to={`/showtime/${movie._id}`} className="btn-detail">
-                Đặt vé
-              </Link>
+              <button className="btn-ticket">Đặt vé</button>
               <Link to={`/detail/${movie._id}`} className="btn-detail">
                 Xem chi tiết
               </Link>
@@ -105,20 +104,8 @@ const Home = () => {
           </div>
         ))}
       </div>
-
-      <h1 className="m-2">Events</h1>
-      <div className="list-event container mb-5">
-        {listEvents.map((event) => (
-          <div className="event" onClick={() => window.location.href = `/promotion/${event._id}`}>
-            <img src={event.homePageUrl} />
-          </div>
-        ))}
-      </div>
-      <div className="list-event row container mb-5">
-        <img src="https://media.lottecinemavn.com/Media/WebAdmin/6f7ba9d65ac3466fb562d7a1d8d873a5.jpg" />
-      </div>
     </div>
   );
 };
 
-export default Home;
+export default Movies;

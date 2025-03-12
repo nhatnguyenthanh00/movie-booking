@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
-import { getMovieDetail, addReview } from "../../api/MovieApi";
+import moviesApi from "../../api/MovieApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./MovieDetail.css";
 import { Link } from "react-router-dom";
@@ -15,9 +15,10 @@ const MovieDetail = () => {
 
   useEffect(() => {
     const fetchMovieDetail = async () => {
-      const data = await getMovieDetail(movieId);
+      const data = await moviesApi.getMovieDetail(movieId);
+      console.log(data)
       if (data) {
-        setMovie(data.movie);
+        setMovie(data);
         setReviews(data.reviews);
       }
     };
@@ -53,7 +54,7 @@ const MovieDetail = () => {
 
     try {
       const reviewData = { rating, comment };
-      const newReview = await addReview(movieId, reviewData);
+      const newReview = await moviesApi.addReview(movieId, reviewData);
       setReviews([...reviews, newReview]);
       setRating(1);
       setComment("");
@@ -196,7 +197,7 @@ const MovieDetail = () => {
         </Form>
 
         {/* Hiển thị danh sách đánh giá */}
-        {reviews.map((review, index) => (
+        {reviews?.map((review, index) => (
           <Row className="mb-4 border-bottom" key={index}>
             <Col md={9}>
               <div>
