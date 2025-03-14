@@ -39,6 +39,15 @@ export default function PromotionDetail() {
             </div>
           </div>
         </div>
+        {eventDetail.noticeContent && (
+          <div className="view_add">
+            <strong>Lưu ý</strong>
+            <p
+              dangerouslySetInnerHTML={{ __html: eventDetail.noticeContent }}
+            />
+          </div>
+        )}
+
         <div className="d-flex justify-content-center m-3">
           <Link to="/promotion" className="btn btn-dark no-radius btn-search">
             Danh sách
