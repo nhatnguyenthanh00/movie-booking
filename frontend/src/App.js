@@ -32,7 +32,8 @@ import Movies from "./pages/Movie/Movies";
 import AdminShowTime from "./pages/AdminPanel/AdminShowTime";
 import MovieDetailAdmin from "./pages/AdminPanel/DetailMovieForAdmin";
 import SideBarAdmin from "./components/SideBarAdmin/SideBarAdmin";
-import AdminAccount from "./pages/AdminPanel/AdminAccount";
+
+import ManageUser from "./pages/AdminPanel/ManageUser";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -90,10 +91,10 @@ const App = () => {
               }
             />
             <Route
-              path="/admin/accounts"
+              path="/admin/manageUser"
               element={
                 <ProtectedRoute role="admin">
-                  <AdminAccount />
+                  <ManageUser />
                 </ProtectedRoute>
               }
             />

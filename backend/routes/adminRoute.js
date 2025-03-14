@@ -4,6 +4,9 @@ const adminController = require("../controllers/AdminController");
 // Lấy tất cả user
 router.get("/users", adminController.getAllUsers);
 
+// Thay đổi role user
+router.put("/users/:id/change-role", adminController.changeRoleUser);
+
 // Thay đổi trạng thái user
 router.put("/users/:id/change-status", adminController.changeStatusUser);
 
