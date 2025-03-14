@@ -69,3 +69,12 @@
   vertical-align: middle;
   padding: 0 10px;
 }
+.view_add {
+  width: 980px;
+  margin: 0 auto;
+  padding: 50px 40px;
+  background: #efebdb;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}

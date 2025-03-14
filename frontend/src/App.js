@@ -50,7 +50,6 @@ const App = () => {
     <AuthProvider>
       <Router>
         <Layout>
-         
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
@@ -77,24 +76,40 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route path="/admin/events" element={<AdminEvents />} />
-            <Route path="/admin/movies" element={ 
-              <ProtectedRoute role="admin">
+            <Route
+              path="/admin/events"
+              element={
+                <ProtectedRoute role="admin">
+                  <AdminEvents />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/admin/movies"
+              element={
+                <ProtectedRoute role="admin">
                   <AdminMovies />
-                </ProtectedRoute>} 
+                </ProtectedRoute>
+              }
             />
-            <Route path="/admin/showTime" element={ 
-              <ProtectedRoute role="admin">
+            <Route
+              path="/admin/showTime"
+              element={
+                <ProtectedRoute role="admin">
                   <AdminShowTime />
-                </ProtectedRoute>} 
+                </ProtectedRoute>
+              }
             />
-            <Route path="/admin/detail/:movieId" element={ 
-              <ProtectedRoute role="admin">
+            <Route
+              path="/admin/detail/:movieId"
+              element={
+                <ProtectedRoute role="admin">
                   <MovieDetailAdmin />
-                </ProtectedRoute>} 
+                </ProtectedRoute>
+              }
             />
           </Routes>
-          
         </Layout>
       </Router>
     </AuthProvider>

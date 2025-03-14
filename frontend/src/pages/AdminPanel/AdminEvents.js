@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api/eventApi.js";
-import { EditorState, convertToRaw, ContentState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
-import htmlToDraft from "html-to-draftjs";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import { Modal, Button } from "react-bootstrap";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export default function AdminEvents() {
   const [events, setEvents] = useState([]);
@@ -13,31 +10,33 @@ export default function AdminEvents() {
   const [showEditModal, setShowEditModal] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
-  const [editorDescriptionState, setEditorDescriptionState] = useState(
-    EditorState.createEmpty()
-  );
-  const [editorNoticeContentState, setEditorNoticeContentState] = useState(
-    EditorState.createEmpty()
-  );
+
   const [selectedEvent, setSelectedEvent] = useState(null); // Lưu event được chọn
   const [dateError, setDateError] = useState(""); // State lưu lỗi ngày
-  const [editEvent, setEditEvent] = useState({
-    title: "",
-    homePageUrl: "",
-    startTime: "",
-    endTime: "",
-    detailUrl: "",
-    isMainEvent: false,
-  });
+
   const [newEvent, setNewEvent] = useState({
     title: "",
     homePageUrl: "",
     startTime: "",
     endTime: "",
     detailUrl: "",
+    description: "",
+    noticeContent: "",
     isMainEvent: false,
   });
 
+  const [editEvent, setEditEvent] = useState({
+    title: "",
+    homePageUrl: "",
+    startTime: "",
+    endTime: "",
+    detailUrl: "",
+    description: "",
+    noticeContent: "",
+    isMainEvent: false,
+  });
+
+  //fetch data
   const fetchEvents = async () => {
     try {
       const res = await api.getAll();
@@ -47,17 +46,20 @@ export default function AdminEvents() {
     }
   };
 
+  //delete event
   const handleDelete = async (id) => {
     if (!window.confirm("Bạn có chắc chắn muốn xóa sự kiện này không?")) return;
     try {
       await api.deleteEventById(id);
+      alert("Event delete successfully!"); // Hiển thị thông báo thành công
       fetchEvents();
     } catch (error) {
       console.log("Failed to delete event: ", error);
     }
   };
 
-  const handleChange = (e) => {
+  // Cập nhật state khi nhập dữ liệu form Add event
+  const handleAddChange = (e) => {
     const { name, value, type, checked } = e.target;
     setNewEvent((prev) => ({
       ...prev,
@@ -65,21 +67,6 @@ export default function AdminEvents() {
     }));
   };
 
-  const handleEditorDescriptionChange = (state) => {
-    setEditorDescriptionState(state);
-    setNewEvent((prev) => ({
-      ...prev,
-      description: draftToHtml(convertToRaw(state.getCurrentContent())), // Chuyển đổi nội dung soạn thảo thành HTML
-    }));
-  };
-
-  const handleEditorDescriptionUpdateChange = (state) => {
-    setEditorDescriptionState(state);
-    setEditEvent((prev) => ({
-      ...prev,
-      description: draftToHtml(convertToRaw(state.getCurrentContent())), // Chuyển đổi nội dung soạn thảo thành HTML
-    }));
-  };
   // Cập nhật state khi nhập dữ liệu form Edit
   const handleEditChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -88,19 +75,21 @@ export default function AdminEvents() {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
-  const handleEditorNoticeContentChange = (state) => {
-    setEditorNoticeContentState(state);
-    setNewEvent((prev) => ({
-      ...prev,
-      noticeContent: draftToHtml(convertToRaw(state.getCurrentContent())), // Chuyển đổi nội dung soạn thảo thành HTML
-    }));
+
+  const handleDescriptionChange = (value) => {
+    setNewEvent((prev) => ({ ...prev, description: value }));
   };
-  const handleEditorNoticeContentUpdateChange = (state) => {
-    setEditorNoticeContentState(state);
-    setEditEvent((prev) => ({
-      ...prev,
-      noticeContent: draftToHtml(convertToRaw(state.getCurrentContent())), // Chuyển đổi nội dung soạn thảo thành HTML
-    }));
+
+  const handleNoticeContentChange = (value) => {
+    setNewEvent((prev) => ({ ...prev, noticeContent: value }));
+  };
+
+  const handleEditDescriptionChange = (value) => {
+    setEditEvent((prev) => ({ ...prev, description: value }));
+  };
+
+  const handleEditNoticeContentChange = (value) => {
+    setEditEvent((prev) => ({ ...prev, noticeContent: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -115,11 +104,12 @@ export default function AdminEvents() {
       setDateError(
         "Start date must be before the end date and cannot be the same."
       );
-      return; // Dừng submit nếu có lỗi
+      return;
     }
 
     try {
       await api.addNewEvent(newEvent);
+      alert("Event created successfully!"); // Hiển thị thông báo thành công
       setShowForm(false);
       setNewEvent({
         title: "",
@@ -131,43 +121,27 @@ export default function AdminEvents() {
         noticeContent: "",
         isMainEvent: false,
       });
-      setEditorDescriptionState(EditorState.createEmpty()); // Reset editor
+
       fetchEvents();
     } catch (error) {
-      console.log("Failed to create event: ", error);
+      console.error("Failed to create event: ", error);
+      alert("Failed to create event. Please try again!"); // Hiển thị thông báo thất bại
     }
   };
+
   const handleShowModal = (event) => {
     setSelectedEvent(event);
     setShowModal(true);
   };
+
   // Mở modal edit và load dữ liệu vào form
   const handleShowEditModal = (event) => {
     setEditEvent(event);
     setShowEditModal(true);
-
-    // Chuyển đổi HTML sang draft-js EditorState
-    const descriptionBlocks = htmlToDraft(event.description || "");
-    const descriptionContentState = ContentState.createFromBlockArray(
-      descriptionBlocks.contentBlocks
-    );
-    setEditorDescriptionState(
-      EditorState.createWithContent(descriptionContentState)
-    );
-
-    const noticeBlocks = htmlToDraft(event.noticeContent || "");
-    const noticeContentState = ContentState.createFromBlockArray(
-      noticeBlocks.contentBlocks
-    );
-    setEditorNoticeContentState(
-      EditorState.createWithContent(noticeContentState)
-    );
   };
   // close modal edit
   const handleCloseEditModal = () => {
     setShowEditModal(false);
-    setEditorDescriptionState(EditorState.createEmpty());
-    setEditorNoticeContentState(EditorState.createEmpty());
   };
 
   // Gửi API để cập nhật sự kiện
@@ -176,6 +150,7 @@ export default function AdminEvents() {
     try {
       await api.updateEventById(editEvent._id, editEvent);
       setShowEditModal(false);
+      alert("Event updated successfully!"); // Hiển thị thông báo thành công
       handleCloseEditModal();
 
       fetchEvents(); // Refresh danh sách sự kiện
@@ -183,12 +158,6 @@ export default function AdminEvents() {
       console.log("Failed to update event: ", error);
     }
   };
-  useEffect(() => {
-    if (!showEditModal) {
-      setEditorDescriptionState(EditorState.createEmpty());
-      setEditorNoticeContentState(EditorState.createEmpty());
-    }
-  }, [showEditModal]);
 
   useEffect(() => {
     fetchEvents();
@@ -224,7 +193,7 @@ export default function AdminEvents() {
                       className="form-control"
                       name="title"
                       value={newEvent.title}
-                      onChange={handleChange}
+                      onChange={handleAddChange}
                       required
                     />
                   </div>
@@ -235,7 +204,7 @@ export default function AdminEvents() {
                       className="form-control"
                       name="homePageUrl"
                       value={newEvent.homePageUrl}
-                      onChange={handleChange}
+                      onChange={handleAddChange}
                     />
                   </div>
                   <div className="mb-3">
@@ -245,7 +214,7 @@ export default function AdminEvents() {
                       className="form-control"
                       name="detailUrl"
                       value={newEvent.detailUrl}
-                      onChange={handleChange}
+                      onChange={handleAddChange}
                     />
                   </div>
                   <div className="mb-3">
@@ -255,7 +224,7 @@ export default function AdminEvents() {
                       className="form-control"
                       name="startTime"
                       value={newEvent.startTime}
-                      onChange={handleChange}
+                      onChange={handleAddChange}
                       required
                     />
                   </div>
@@ -266,7 +235,7 @@ export default function AdminEvents() {
                       className="form-control"
                       name="endTime"
                       value={newEvent.endTime}
-                      onChange={handleChange}
+                      onChange={handleAddChange}
                       required
                     />
                   </div>
@@ -274,22 +243,46 @@ export default function AdminEvents() {
                   {dateError && <p className="text-danger">{dateError}</p>}{" "}
                   <div className="mb-3">
                     <label className="form-label">Event Detail</label>
-                    <Editor
-                      editorState={editorDescriptionState}
-                      wrapperClassName="editor-wrapper"
-                      editorClassName="editor-content"
-                      toolbarClassName="editor-toolbar"
-                      onEditorStateChange={handleEditorDescriptionChange}
+                    <ReactQuill
+                      value={newEvent.description}
+                      onChange={handleDescriptionChange}
+                      modules={{
+                        toolbar: [
+                          [{ header: [1, 2, 3, 4, false] }],
+                          ["bold", "italic", "underline", "strike"],
+                          [{ list: "ordered" }, { list: "bullet" }],
+                          [{ script: "sub" }, { script: "super" }],
+                          [{ indent: "-1" }, { indent: "+1" }],
+                          [{ direction: "rtl" }],
+                          [{ color: [] }, { background: [] }],
+                          [{ font: [] }],
+                          [{ align: [] }],
+                          ["link", "image", "video"],
+                          ["clean"], // Xóa định dạng
+                        ],
+                      }}
                     />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Notice Content</label>
-                    <Editor
-                      editorState={editorNoticeContentState}
-                      wrapperClassName="editor-wrapper"
-                      editorClassName="editor-content"
-                      toolbarClassName="editor-toolbar"
-                      onEditorStateChange={handleEditorNoticeContentChange}
+                    <ReactQuill
+                      value={newEvent.noticeContent}
+                      onChange={handleNoticeContentChange}
+                      modules={{
+                        toolbar: [
+                          [{ header: [1, 2, 3, 4, false] }],
+                          ["bold", "italic", "underline", "strike"],
+                          [{ list: "ordered" }, { list: "bullet" }],
+                          [{ script: "sub" }, { script: "super" }],
+                          [{ indent: "-1" }, { indent: "+1" }],
+                          [{ direction: "rtl" }],
+                          [{ color: [] }, { background: [] }],
+                          [{ font: [] }],
+                          [{ align: [] }],
+                          ["link", "image", "video"],
+                          ["clean"], // Xóa định dạng
+                        ],
+                      }}
                     />
                   </div>
                   <div className="mb-3 form-check">
@@ -298,7 +291,7 @@ export default function AdminEvents() {
                       className="form-check-input"
                       name="isMainEvent"
                       checked={newEvent.isMainEvent}
-                      onChange={handleChange}
+                      onChange={handleAddChange}
                     />
                     <label className="form-check-label">Is Main Event?</label>
                   </div>
@@ -347,18 +340,21 @@ export default function AdminEvents() {
                       <td>{event.isMainEvent ? "True" : "False"}</td>
                       <td className="d-flex flex-column">
                         <button
+                          style={{ borderRadius: "0px" }}
                           className="btn btn-success text-white mb-2"
                           onClick={() => handleShowModal(event)}
                         >
                           View Detail
                         </button>
                         <button
+                          style={{ borderRadius: "0px" }}
                           className="btn btn-primary text-white mb-2"
                           onClick={() => handleShowEditModal(event)}
                         >
                           Edit
                         </button>
                         <button
+                          style={{ borderRadius: "0px" }}
                           onClick={() => handleDelete(event._id)}
                           className="btn btn-danger text-white"
                         >
@@ -391,6 +387,7 @@ export default function AdminEvents() {
                   <p>
                     <strong>Description:</strong>
                   </p>
+
                   <div
                     dangerouslySetInnerHTML={{
                       __html: selectedEvent.description,
@@ -413,6 +410,7 @@ export default function AdminEvents() {
               </Button>
             </Modal.Footer>
           </Modal>
+
           {/* Modal chỉnh sửa sự kiện */}
           <Modal
             show={showEditModal}
@@ -425,23 +423,92 @@ export default function AdminEvents() {
             <Modal.Body>
               {editEvent && (
                 <form onSubmit={handleEditSubmit}>
-                  <input
-                    type="text"
-                    className="form-control mb-2"
-                    name="title"
-                    value={editEvent.title}
-                    onChange={handleEditChange}
-                    required
-                  />
+                  <div className="mb-3">
+                    <label className="form-label">Title</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="title"
+                      value={editEvent.title}
+                      onChange={handleEditChange}
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Image URL</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="homePageUrl"
+                      value={editEvent.homePageUrl}
+                      onChange={handleEditChange}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Image Detail URL</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="detailUrl"
+                      value={editEvent.detailUrl}
+                      onChange={handleEditChange}
+                    />
+                  </div>
 
-                  <Editor
-                    editorState={editorDescriptionState}
-                    onEditorStateChange={handleEditorDescriptionUpdateChange}
-                  />
-                  <Editor
-                    editorState={editorNoticeContentState}
-                    onEditorStateChange={handleEditorNoticeContentUpdateChange}
-                  />
+                  <div className="mb-3">
+                    <label className="form-label">Event Detail</label>
+                    <ReactQuill
+                      value={editEvent.description}
+                      onChange={handleEditDescriptionChange}
+                      modules={{
+                        toolbar: [
+                          [{ header: [1, 2, 3, 4, false] }],
+                          ["bold", "italic", "underline", "strike"],
+                          [{ list: "ordered" }, { list: "bullet" }],
+                          [{ script: "sub" }, { script: "super" }],
+                          [{ indent: "-1" }, { indent: "+1" }],
+                          [{ direction: "rtl" }],
+                          [{ color: [] }, { background: [] }],
+                          [{ font: [] }],
+                          [{ align: [] }],
+                          ["link", "image", "video"],
+                          ["clean"], // Xóa định dạng
+                        ],
+                      }}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Notice Content</label>
+                    <ReactQuill
+                      value={editEvent.noticeContent}
+                      onChange={handleEditNoticeContentChange}
+                      modules={{
+                        toolbar: [
+                          [{ header: [1, 2, 3, 4, false] }],
+                          ["bold", "italic", "underline", "strike"],
+                          [{ list: "ordered" }, { list: "bullet" }],
+                          [{ script: "sub" }, { script: "super" }],
+                          [{ indent: "-1" }, { indent: "+1" }],
+                          [{ direction: "rtl" }],
+                          [{ color: [] }, { background: [] }],
+                          [{ font: [] }],
+                          [{ align: [] }],
+                          ["link", "image", "video"],
+                          ["clean"], // Xóa định dạng
+                        ],
+                      }}
+                    />
+                  </div>
+                  <div className="mb-3 form-check">
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      name="isMainEvent"
+                      checked={editEvent.isMainEvent}
+                      onChange={handleEditChange}
+                    />
+                    <label className="form-check-label">Is Main Event?</label>
+                  </div>
                   <button type="submit" className="btn btn-success">
                     Save Changes
                   </button>
