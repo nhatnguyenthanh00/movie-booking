@@ -31,17 +31,22 @@ import AdminMovies from "./pages/AdminPanel/AdminMovies";
 import Movies from "./pages/Movie/Movies";
 import AdminShowTime from "./pages/AdminPanel/AdminShowTime";
 import MovieDetailAdmin from "./pages/AdminPanel/DetailMovieForAdmin";
+import SideBarAdmin from "./components/SideBarAdmin/SideBarAdmin";
+import AdminAccount from "./pages/AdminPanel/AdminAccount";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
 
   return (
-    <>
+    <div className="layout">
       {isAdminRoute ? <HeaderAdmin /> : <Header />}
-      {children}
+      <div className="main-container">
+        {isAdminRoute && <SideBarAdmin />}
+        <div className="content">{children}</div>
+      </div>
       {isAdminRoute ? <FooterAdmin /> : <Footer />}
-    </>
+    </div>
   );
 };
 
@@ -84,7 +89,14 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-
+            <Route
+              path="/admin/accounts"
+              element={
+                <ProtectedRoute role="admin">
+                  <AdminAccount />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/admin/movies"
               element={
