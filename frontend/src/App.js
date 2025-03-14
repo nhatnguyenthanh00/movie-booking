@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header/Header";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
-import Dashboard from "./pages/Dashboard/Dashboard";
+//import Dashboard from "./pages/Dashboard/Dashboard";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -31,6 +31,8 @@ import AdminMovies from "./pages/AdminPanel/AdminMovies";
 import Movies from "./pages/Movie/Movies";
 import AdminShowTime from "./pages/AdminPanel/AdminShowTime";
 import MovieDetailAdmin from "./pages/AdminPanel/DetailMovieForAdmin";
+import Profile from "./pages/Login/profile";
+import ForgotPassword from "./pages/Login/forgotPassword";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -50,7 +52,7 @@ const App = () => {
     <AuthProvider>
       <Router>
         <Layout>
-         
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
@@ -61,11 +63,12 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/verify-otp" element={<VerifyOtp />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route
-              path="/dashboard"
+              path="/me"
               element={
                 <ProtectedRoute role="user">
-                  <Dashboard />
+                  <Profile />
                 </ProtectedRoute>
               }
             />
@@ -78,23 +81,23 @@ const App = () => {
               }
             />
             <Route path="/admin/events" element={<AdminEvents />} />
-            <Route path="/admin/movies" element={ 
+            <Route path="/admin/movies" element={
               <ProtectedRoute role="admin">
-                  <AdminMovies />
-                </ProtectedRoute>} 
+                <AdminMovies />
+              </ProtectedRoute>}
             />
-            <Route path="/admin/showTime" element={ 
+            <Route path="/admin/showTime" element={
               <ProtectedRoute role="admin">
-                  <AdminShowTime />
-                </ProtectedRoute>} 
+                <AdminShowTime />
+              </ProtectedRoute>}
             />
-            <Route path="/admin/detail/:movieId" element={ 
+            <Route path="/admin/detail/:movieId" element={
               <ProtectedRoute role="admin">
-                  <MovieDetailAdmin />
-                </ProtectedRoute>} 
+                <MovieDetailAdmin />
+              </ProtectedRoute>}
             />
           </Routes>
-          
+
         </Layout>
       </Router>
     </AuthProvider>
