@@ -13,6 +13,8 @@ const eventApi = {
     const response = await api.get(url);
     return response;
   },
+
+  // Admin
   deleteEventById: async (id) => {
     console.log("day nauy", id);
     const url = `/admin/events/${id}`;

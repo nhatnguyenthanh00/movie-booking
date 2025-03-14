@@ -13,8 +13,10 @@ const SidebarAdmin = () => {
         <li className={location.pathname === "/admin/events" ? "active" : ""}>
           <Link to="/admin/events">Events</Link>
         </li>
-        <li className={location.pathname === "/admin/accounts" ? "active" : ""}>
-          <Link to="/admin/accounts">Account</Link>
+        <li
+          className={location.pathname === "/admin/manageUser" ? "active" : ""}
+        >
+          <Link to="/admin/manageUser">Manage User</Link>
         </li>
         <li className={location.pathname === "/admin/movies" ? "active" : ""}>
           <Link to="/admin/movies">Movies</Link>
