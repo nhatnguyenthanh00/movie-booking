@@ -4,18 +4,27 @@ import { FaUser, FaLock, FaEnvelope, FaPhone } from "react-icons/fa";
 import signupApi from "../../api/signupApi"; // Đảm bảo import đúng
 
 const SignUp = () => {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const validatePassword = (password) => {
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return passwordRegex.test(password);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (password !== confirmPassword) {
             setError("Passwords do not match.");
+            return;
+        }
+        if (!validatePassword(password)) {
+            setError("Mật khẩu phải có ít nhất 8 ký tự, bao gồm 1 chữ cái viết hoa, 1 số và 1 ký tự đặc biệt!");
             return;
         }
 
@@ -28,7 +37,7 @@ const SignUp = () => {
 
             if (otpResponse.message) {
                 // Chuyển hướng đến trang xác thực OTP
-                navigate("/verify-otp", { state: { email, password, phone, type: "register" } });
+                navigate("/verify-otp", { state: { name, email, password, phone, type: "register" } });
             } else {
                 setError(otpResponse.message || "Failed to send OTP.");
             }
@@ -50,6 +59,18 @@ const SignUp = () => {
                         </div>
                         {error && <div className="alert alert-danger">{error}</div>}
                         <form onSubmit={handleSubmit}>
+                            {/* Trường nhập Name */}
+                            <div className="input-group mb-3">
+                                <span className="input-group-text"><FaUser /></span>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Full Name"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    required
+                                />
+                            </div>
                             {/* Trường email */}
                             <div className="input-group mb-3">
                                 <span className="input-group-text"><FaEnvelope /></span>
