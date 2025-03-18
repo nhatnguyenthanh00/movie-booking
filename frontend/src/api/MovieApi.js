@@ -13,8 +13,6 @@ const movieApi = {
     }
   },
 
-  
-
   getMovieDetail: async (movieId) => {
     try {
       const response = await api.get(`/movie/detail/${movieId}`);
@@ -25,24 +23,12 @@ const movieApi = {
     }
   },
 
-  addReview: async (movieId, reviewData) => {
-    try {
-      const response = await api.post(`/review/add-new`, reviewData, {
-        withCredentials: true,
-      });
-      return response.data;
-    } catch (error) {
-      console.error("Error adding review", error);
-      throw error;
-    }
-  },
-
   getNowPlayingMovies: async () => {
     try {
       const response = await api.get(`/movie/main`);
       const allMovies = response.data;
       const today = new Date();
-      return allMovies.filter(movie => new Date(movie.releaseDate) <= today);
+      return allMovies.filter((movie) => new Date(movie.releaseDate) <= today);
     } catch (error) {
       console.error("Error fetching now showing movies", error);
       return [];
@@ -54,7 +40,7 @@ const movieApi = {
       const response = await api.get(`/movie/main`);
       const allMovies = response.data;
       const today = new Date();
-      return allMovies.filter(movie => new Date(movie.releaseDate) > today);
+      return allMovies.filter((movie) => new Date(movie.releaseDate) > today);
     } catch (error) {
       console.error("Error fetching upcoming movies", error);
       return [];
@@ -100,10 +86,30 @@ const movieApi = {
   },
 
   getAllRoom: async () => {
-    const url =  `admin/rooms`
-    const response = await api.get(url)
+    const url = `admin/rooms`;
+    const response = await api.get(url);
     return response.data;
-  }
+  },
+
+  addReview: async (reviewData) => {
+    try {
+      const response = await api.post(`/review/add-new`, reviewData);
+      return response.data;
+    } catch (error) {
+      console.error("Error adding review", error);
+      throw error;
+    }
+  },
+
+  getReview: async (movieId) => {
+    try {
+      const response = await api.get(`/movie/detail/${movieId}/reviews`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching reviews", error);
+      return [];
+    }
+  },
 };
 
 export default movieApi;

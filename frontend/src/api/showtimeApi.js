@@ -1,38 +1,32 @@
-import axios from "axios";
-
-const API_BASE_URL = "http://localhost:9999";
+import api from "./baseApi";
 
 export const getShowtimeByDay = async (movieId, date) => {
   try {
-    const response = await axios.get(
-      `${API_BASE_URL}/movie/${movieId}/showtime?date=${date}`
+    const response = await api.get(
+      `/movie/${movieId}/showtime-by-day?date=${date}`
     );
     return response.data;
   } catch (error) {
-    console.error("Error showtime", error);
-    return [];
-  }
-};
-export const addShowtime = async (movieId, showtimeData) => {
-  try {
-    const response = await axios.post(
-      `${API_BASE_URL}/${movieId}/showtime`,
-      showtimeData
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error adding showtime", error);
+    console.error("Error fetching reviews", error);
     throw error;
   }
 };
 
-export const getAllShowtimeMovie = async (movieId) => {
-  try{
-    const response = await axios.get(
-      `${API_BASE_URL}/movie/${movieId}/showtime-by-day`
-    );
-    return response
-  }catch(err){
-    console.error("Error showtime", err);
+export const getAllShowtimeMovie = async (showtimeId, date) => {
+  try {
+    const response = await api.get(`movie/showtime/${showtimeId}?date=${date}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching reviews", error);
+    throw error;
+  }
+};
+export const getShowtimeById = async (showtimeId, date) => {
+  try {
+    const response = await api.get(`movie/showtime/${showtimeId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching reviews", error);
+    throw error;
   }
 };
