@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
-import moviesApi from "../../api/MovieApi";
+import movieApi from "../../api/MovieApi"; // Import movieApi
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./MovieDetail.css";
 import { Link } from "react-router-dom";
+
 const MovieDetail = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
@@ -15,11 +16,11 @@ const MovieDetail = () => {
 
   useEffect(() => {
     const fetchMovieDetail = async () => {
-      const data = await moviesApi.getMovieDetail(movieId);
-      console.log(data)
+      const data = await movieApi.getMovieDetail(movieId); // Sử dụng movieApi.getMovieDetail
       if (data) {
         setMovie(data);
-        setReviews(data.reviews);
+        const reviewsData = await movieApi.getReview(movieId); // Sử dụng movieApi.getReview
+        setReviews(reviewsData);
       }
     };
     fetchMovieDetail();
@@ -37,11 +38,28 @@ const MovieDetail = () => {
     return stars.join("");
   };
 
-  const maskEmail = (email) => {
-    const [username, domain] = email.split("@");
-    const maskedUsername =
-      username.slice(0, 2) + "*".repeat(username.length - 2);
-    return `${maskedUsername}@${domain}`;
+  const StarRatingInput = ({ rating, setRating }) => {
+    const [hoverRating, setHoverRating] = useState(0);
+
+    return (
+      <div>
+        {[1, 2, 3, 4, 5].map((star) => (
+          <span
+            key={star}
+            style={{
+              cursor: "pointer",
+              color: star <= (hoverRating || rating) ? "gray" : "gray",
+              fontSize: "24px",
+            }}
+            onClick={() => setRating(star)}
+            onMouseEnter={() => setHoverRating(star)}
+            onMouseLeave={() => setHoverRating(0)}
+          >
+            {star <= (hoverRating || rating) ? "★" : "☆"}
+          </span>
+        ))}
+      </div>
+    );
   };
 
   const handleSubmitReview = async (e) => {
@@ -53,17 +71,20 @@ const MovieDetail = () => {
     }
 
     try {
-      const reviewData = { rating, comment };
-      const newReview = await moviesApi.addReview(movieId, reviewData);
-      setReviews([...reviews, newReview]);
-      setRating(1);
-      setComment("");
+      const reviewData = { rating, comment, movie: movieId };
+      const newReview = await movieApi.addReview(reviewData); // Sử dụng movieApi.addReview
+      console.log(newReview);
+      if (newReview) {
+        setReviews((prevReviews) => [...prevReviews, newReview]);
+        setRating(1);
+        setComment("");
+      }
     } catch (error) {
       console.error("Error submitting review", error);
     }
   };
 
-  if (!movie) return <p>Loading...</p>;
+  if (!movie) return;
 
   const getTrailerUrlWithAutoplay = (url) => {
     const urlObj = new URL(url);
@@ -166,63 +187,81 @@ const MovieDetail = () => {
 
       {/* Phần 3: Đánh giá */}
       <Container className="my-5">
-        <h3 className="fw-bold mb-4">Đánh giá</h3>
+        <h3 className="fw-bold mb-4">Xếp hạng và đánh giá phim</h3>
 
         {/* Form thêm đánh giá */}
-        <Form onSubmit={handleSubmitReview} className="mb-5">
-          <Form.Group className="mb-3">
-            <Form.Label>Đánh giá của bạn (1-5 sao)</Form.Label>
-            <Form.Control
-              type="number"
-              min="1"
-              max="5"
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Bình luận</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Gửi đánh giá
-          </Button>
+        <Form
+          onSubmit={handleSubmitReview}
+          className="border p-2 rounded shadow-sm"
+        >
+          <Row className="align-items-center">
+            <Col md={2} className="border-end text-center p-2">
+              <h6 className="fw-bold mb-2" style={{ fontSize: "14px" }}>
+                Xếp hạng
+              </h6>
+              <StarRatingInput rating={rating} setRating={setRating} />
+              <div className="mt-1 text-muted" style={{ fontSize: "12px" }}>
+                {rating} sao
+              </div>
+            </Col>
+            <Col md={8} className="p-2">
+              <Form.Group className="mb-0">
+                <Form.Control
+                  as="textarea"
+                  rows={2}
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  required
+                  placeholder="Vui lòng viết đánh giá phim..."
+                  style={{ resize: "none", fontSize: "16px" }}
+                  className="border-0 shadow-none"
+                />
+              </Form.Group>
+            </Col>
+            <Col
+              md={2}
+              className="p-3 text-center bg-dark text-light d-flex align-items-center justify-content-center"
+            >
+              <Button
+                type="submit"
+                variant="link"
+                className="text-light fw-bold w-100 h-100"
+              >
+                Bình luận
+              </Button>
+            </Col>
+          </Row>
         </Form>
 
         {/* Hiển thị danh sách đánh giá */}
-        {reviews?.map((review, index) => (
-          <Row className="mb-4 border-bottom" key={index}>
-            <Col md={9}>
-              <div>
-                {/* Hiển thị rating dưới dạng sao */}
-                <strong className="mb-2 text-muted">
-                  Khách: {renderStars(review.rating)}
-                </strong>
-                <br />
-                <strong>{review.comment}</strong>
-                <div className="text-muted">
-                  <small>
-                    {new Date(review.createdAt).toLocaleDateString()}
-                  </small>
-                </div>
-              </div>
-            </Col>
-
-            <Col md={3}>
-              <div className="text-center">
-                {/* Che đi phần giữa của email */}
-                <div>{maskEmail(review.user.email)}</div>
-              </div>
-            </Col>
-          </Row>
-        ))}
+        <div className="mt-5">
+          {reviews?.map(
+            (review, index) =>
+              review ? ( // Check if review is defined
+                <Row className="mb-5 border-bottom" key={index}>
+                  <Col md={9}>
+                    <div>
+                      <strong className="mb-2 text-muted">
+                        Khách: {renderStars(review?.rating || 0)}{" "}
+                      </strong>
+                      <br />
+                      <strong>{review.comment}</strong>
+                      <div className="text-muted">
+                        <small>
+                          {new Date(review.createdAt).toLocaleDateString()}
+                        </small>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col md={3}>
+                    <div className="text-center">
+                      {/* <div>{maskEmail(review.user?.email)}</div>{" "} */}
+                    </div>
+                  </Col>
+                </Row>
+              ) : null // Fallback for undefined reviews
+          )}
+        </div>
       </Container>
     </Container>
   );

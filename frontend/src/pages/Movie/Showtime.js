@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { getShowtimeByDay } from "../../api/showtimeApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Showtime = () => {
   const { movieId } = useParams();
+  const navigate = useNavigate();
   const [showtimes, setShowtimes] = useState([]);
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().split("T")[0]
@@ -24,70 +25,120 @@ const Showtime = () => {
     fetchShowtimes();
   }, [movieId, selectedDate]);
 
-  const handleDateChange = (e) => {
-    setSelectedDate(e.target.value);
+  const getWeekDates = (startDate) => {
+    return Array.from({ length: 7 }, (_, i) => {
+      const date = new Date(startDate);
+      date.setDate(startDate.getDate() + i);
+      return date.toISOString().split("T")[0];
+    });
+  };
+
+  const handleSelectSeat = (showtimeId) => {
+    navigate(`/showtime-detail/${showtimeId}`);
   };
 
   return (
     <Container className="my-5">
-      <h1 className="fw-bold mb-2">Lịch chiếu</h1>
+      <h1 className="fw-bold mb-4 text-center">Lịch Chiếu Phim</h1>
       {showtimes.length > 0 && (
-        <h2 className="mb-4 text-primary">
+        <h2 className="fw-bold mb-4 text-center">
           {showtimes[0].movie?.title || "Không có thông tin phim"}
         </h2>
       )}
       <Row className="mb-4">
-        <Col md={4}>
-          <label htmlFor="date" className="form-label">
-            Chọn ngày:
-          </label>
-          <input
-            type="date"
-            id="date"
-            className="form-control"
-            value={selectedDate}
-            onChange={handleDateChange}
-          />
+        <Col>
+          <div className="d-flex flex-wrap gap-2 justify-content-center">
+            {getWeekDates(new Date()).map((date) => (
+              <Button
+                key={date}
+                variant={selectedDate === date ? "primary" : "outline-primary"}
+                onClick={() => setSelectedDate(date)}
+                className="flex-grow-1 flex-md-grow-0 text-center py-2 px-3 rounded-pill"
+                style={{
+                  minWidth: "100px",
+                  border:
+                    selectedDate === date
+                      ? "2px solid transparent"
+                      : "2px solid #0d6efd",
+                  fontWeight: "500",
+                  fontSize: "0.9rem",
+                }}
+              >
+                {new Date(date).toLocaleDateString("vi-VN", {
+                  weekday: "short",
+                  day: "numeric",
+                  month: "numeric",
+                })}
+              </Button>
+            ))}
+          </div>
         </Col>
       </Row>
       {showtimes.length > 0 ? (
         showtimes.map((showtime) => (
           <Row key={showtime._id} className="mb-3 border-bottom pb-3">
             <Col md={8}>
-              <p className="fs-5">
-                <strong>Thời gian:</strong>{" "}
-                {new Date(showtime.startTime).toLocaleTimeString()} -{" "}
-                {new Date(showtime.endTime).toLocaleTimeString()}
+              <p className="fs-5 mb-2">
+                <strong>Thời Gian:</strong>{" "}
+                {new Date(showtime.startTime).toLocaleTimeString("vi-VN", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })}{" "}
+                -{" "}
+                {new Date(showtime.endTime).toLocaleTimeString("vi-VN", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })}
               </p>
 
-              <p className="fs-5">
+              <p className="fs-5 mb-2">
                 <strong>Phòng:</strong>{" "}
                 {showtime.room?.name || "Không có thông tin phòng"}
               </p>
 
-              <p className="fs-5">
+              <p className="fs-5 mb-2">
                 <strong>Loại:</strong> {showtime.type}
               </p>
 
-              <p className="fs-5">
-                <strong>Giá vé:</strong>{" "}
-                {showtime.pricing?.normal || "Không có thông tin giá"} VNĐ
+              <p className="fs-5 mb-2">
+                <strong>Giá Vé:</strong>
+                <br />
+                {showtime.pricing?.normal ? (
+                  <>
+                    {showtime.pricing.normal.toLocaleString()} VNĐ (Thường)
+                    <br />
+                  </>
+                ) : (
+                  "Không có thông tin giá"
+                )}
+                {showtime.pricing?.vip && (
+                  <>{showtime.pricing.vip.toLocaleString()} VNĐ (VIP)</>
+                )}
               </p>
 
-              <p className="fs-5">
+              <p className="fs-5 mb-2">
                 <strong>Ghế:</strong> {showtime.seats?.length || 0} / 100 ghế
               </p>
             </Col>
 
-            <Col md={4} className="text-end d-flex align-items-center">
-              <Button variant="danger" className="fw-bold px-4 py-2">
-                Chọn ghế
+            <Col
+              md={4}
+              className="text-end d-flex align-items-center justify-content-end"
+            >
+              <Button
+                variant="danger"
+                className="fw-bold px-4 py-2"
+                onClick={() => handleSelectSeat(showtime._id)}
+              >
+                Chọn Ghế
               </Button>
             </Col>
           </Row>
         ))
       ) : (
-        <p>Không có suất chiếu nào trong ngày này.</p>
+        <p className="text-center">Không có suất chiếu nào trong ngày này.</p>
       )}
     </Container>
   );

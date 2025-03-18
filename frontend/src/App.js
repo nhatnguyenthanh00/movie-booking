@@ -35,6 +35,8 @@ import ForgotPassword from "./pages/Login/forgotPassword";
 import Profile from "./pages/Login/profile"
 import SideBarAdmin from "./components/SideBarAdmin/SideBarAdmin";
 import ManageUser from "./pages/AdminPanel/ManageUser";
+import ShowtimeDetail from "./pages/Movie/ShowtimeDetail";
+
 const Layout = ({ children }) => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
@@ -62,6 +64,10 @@ const App = () => {
             <Route path="/movies" element={<Movies />} />
             <Route path="/detail/:movieId" element={<MovieDetail />} />
             <Route path="/showtime/:movieId" element={<Showtime />} />
+            <Route
+              path="/showtime-detail/:showtimeId"
+              element={<ShowtimeDetail />}
+            />
             <Route path="/promotion" element={<Promotion />} />
             <Route path="/promotion/:id" element={<PromotionDetail />} />
             <Route path="/login" element={<Login />} />

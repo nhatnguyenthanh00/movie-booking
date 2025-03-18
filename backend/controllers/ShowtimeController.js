@@ -23,6 +23,7 @@ const getAllShowtime = async (req, res) => {
 
     const showtimes = await Showtime.find(filter)
       .populate("room")
+      .populate("movie", "title")
       .populate("seats.seatInfo", "seatNumber type status -_id");
 
     const formattedShowtimes = showtimes.map((showtime) => {
@@ -42,7 +43,6 @@ const getAllShowtime = async (req, res) => {
     res.status(500).json({ message: "Lỗi server", error });
   }
 };
-
 
 const getShowtimeById = async (req, res) => {
   try {
