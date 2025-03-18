@@ -54,10 +54,12 @@ const createPayment = async (req, res) => {
 };
 
 const getPaymentReturn = async (req, res) => {
-    const vnp_Params = req.query;
+    let vnp_Params = req.query;
     const secureHash = vnp_Params["vnp_SecureHash"];
     delete vnp_Params["vnp_SecureHash"];
     delete vnp_Params["vnp_SecureHashType"];
+
+    vnp_Params = sortObject(vnp_Params);
 
     // 📌 Kiểm tra chữ ký
     const signData = qs.stringify(vnp_Params, { encode: false });
@@ -66,9 +68,9 @@ const getPaymentReturn = async (req, res) => {
 
     if (secureHash === signed) {
         if (vnp_Params["vnp_ResponseCode"] === "00") {
-            res.json({ message: "Thanh toán thành công!", status: "success" });
+            res.status(200).json({ message: "Thanh toán thành công!", status: "success" });
         } else {
-            res.json({ message: "Thanh toán thất bại!", status: "fail" });
+            res.status(400).json({ message: "Thanh toán thất bại!", status: "fail" });
         }
     } else {
         res.status(400).json({ message: "Sai chữ ký bảo mật!" });
