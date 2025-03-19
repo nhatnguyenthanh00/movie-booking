@@ -32,7 +32,7 @@ import Movies from "./pages/Movie/Movies";
 import AdminShowTime from "./pages/AdminPanel/AdminShowTime";
 import MovieDetailAdmin from "./pages/AdminPanel/DetailMovieForAdmin";
 import ForgotPassword from "./pages/Login/forgotPassword";
-import Profile from "./pages/Login/profile"
+import Profile from "./pages/Login/profile";
 import SideBarAdmin from "./components/SideBarAdmin/SideBarAdmin";
 import ManageUser from "./pages/AdminPanel/ManageUser";
 import ShowtimeDetail from "./pages/Movie/ShowtimeDetail";
@@ -58,7 +58,6 @@ const App = () => {
     <AuthProvider>
       <Router>
         <Layout>
-
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
@@ -91,23 +90,39 @@ const App = () => {
               }
             />
             <Route path="/admin/events" element={<AdminEvents />} />
-            <Route path="/admin/movies" element={
-              <ProtectedRoute role="admin">
-                <AdminMovies />
-              </ProtectedRoute>}
+            <Route
+              path="/admin/manageUser"
+              element={
+                <ProtectedRoute role="admin">
+                  <ManageUser />
+                </ProtectedRoute>
+              }
             />
-            <Route path="/admin/showTime" element={
-              <ProtectedRoute role="admin">
-                <AdminShowTime />
-              </ProtectedRoute>}
+            <Route
+              path="/admin/movies"
+              element={
+                <ProtectedRoute role="admin">
+                  <AdminMovies />
+                </ProtectedRoute>
+              }
             />
-            <Route path="/admin/detail/:movieId" element={
-              <ProtectedRoute role="admin">
-                <MovieDetailAdmin />
-              </ProtectedRoute>}
+            <Route
+              path="/admin/showTime"
+              element={
+                <ProtectedRoute role="admin">
+                  <AdminShowTime />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/detail/:movieId"
+              element={
+                <ProtectedRoute role="admin">
+                  <MovieDetailAdmin />
+                </ProtectedRoute>
+              }
             />
           </Routes>
-
         </Layout>
       </Router>
     </AuthProvider>
