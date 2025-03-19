@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./promotion.css";
 import api from "../../api/eventApi.js";
 import { Link } from "react-router-dom";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 export default function Promotion() {
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); // State lưu từ khóa tìm kiếm

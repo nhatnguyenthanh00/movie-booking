@@ -31,19 +31,25 @@ import AdminMovies from "./pages/AdminPanel/AdminMovies";
 import Movies from "./pages/Movie/Movies";
 import AdminShowTime from "./pages/AdminPanel/AdminShowTime";
 import MovieDetailAdmin from "./pages/AdminPanel/DetailMovieForAdmin";
-import Profile from "./pages/Login/profile";
 import ForgotPassword from "./pages/Login/forgotPassword";
+import Profile from "./pages/Login/profile";
+import SideBarAdmin from "./components/SideBarAdmin/SideBarAdmin";
+import ManageUser from "./pages/AdminPanel/ManageUser";
+import ShowtimeDetail from "./pages/Movie/ShowtimeDetail";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
 
   return (
-    <>
+    <div className="layout">
       {isAdminRoute ? <HeaderAdmin /> : <Header />}
-      {children}
+      <div className="main-container">
+        {isAdminRoute && <SideBarAdmin />}
+        <div className="content">{children}</div>
+      </div>
       {isAdminRoute ? <FooterAdmin /> : <Footer />}
-    </>
+    </div>
   );
 };
 
@@ -52,12 +58,15 @@ const App = () => {
     <AuthProvider>
       <Router>
         <Layout>
-
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/detail/:movieId" element={<MovieDetail />} />
             <Route path="/showtime/:movieId" element={<Showtime />} />
+            <Route
+              path="/showtime-detail/:showtimeId"
+              element={<ShowtimeDetail />}
+            />
             <Route path="/promotion" element={<Promotion />} />
             <Route path="/promotion/:id" element={<PromotionDetail />} />
             <Route path="/login" element={<Login />} />
@@ -81,23 +90,39 @@ const App = () => {
               }
             />
             <Route path="/admin/events" element={<AdminEvents />} />
-            <Route path="/admin/movies" element={
-              <ProtectedRoute role="admin">
-                <AdminMovies />
-              </ProtectedRoute>}
+            <Route
+              path="/admin/manageUser"
+              element={
+                <ProtectedRoute role="admin">
+                  <ManageUser />
+                </ProtectedRoute>
+              }
             />
-            <Route path="/admin/showTime" element={
-              <ProtectedRoute role="admin">
-                <AdminShowTime />
-              </ProtectedRoute>}
+            <Route
+              path="/admin/movies"
+              element={
+                <ProtectedRoute role="admin">
+                  <AdminMovies />
+                </ProtectedRoute>
+              }
             />
-            <Route path="/admin/detail/:movieId" element={
-              <ProtectedRoute role="admin">
-                <MovieDetailAdmin />
-              </ProtectedRoute>}
+            <Route
+              path="/admin/showTime"
+              element={
+                <ProtectedRoute role="admin">
+                  <AdminShowTime />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/detail/:movieId"
+              element={
+                <ProtectedRoute role="admin">
+                  <MovieDetailAdmin />
+                </ProtectedRoute>
+              }
             />
           </Routes>
-
         </Layout>
       </Router>
     </AuthProvider>
