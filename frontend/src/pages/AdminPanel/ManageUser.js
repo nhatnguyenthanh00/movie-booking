@@ -115,7 +115,9 @@ function ManageUser() {
                   <td>
                     <button
                       style={{ borderRadius: "0px", width: "100px" }}
-                      className="btn btn-warning btn-sm btn-custom"
+                      className={`btn btn-sm btn-custom ${
+                        user.role === "admin" ? "btn-info" : "btn-warning"
+                      }`}
                       onClick={() => handleChangeRole(user._id, user.role)}
                     >
                       {user.role}
