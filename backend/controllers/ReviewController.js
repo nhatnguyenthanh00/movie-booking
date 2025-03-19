@@ -1,5 +1,5 @@
 const Review = require("../models/Review");
-
+const Movie = require("../models/Movie");
 const addNewReview = async (req, res) => {
   try {
     const userId = req?.user?._id;

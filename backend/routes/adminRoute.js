@@ -36,4 +36,5 @@ router.delete("/showtimes/:id", adminController.deleteShowtime);
 // Lấy tất cả phòng chiếu
 router.get("/rooms", adminController.getAllRoom);
 
+
 module.exports = router;

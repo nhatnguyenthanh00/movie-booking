@@ -11,7 +11,7 @@ const reviewRoutes = require("./routes/reviewRoute");
 const bookingRoutes = require("./routes/bookingRoute");
 const paymentRoutes = require("./routes/paymentRoute");
 const adminRoutes = require("./routes/adminRoute");
-const {checkAuthorize} = require("./middleware/authMiddleware");
+const { checkAuthorize } = require("./middleware/authMiddleware");
 const DB = require("./config/db");
 
 const app = express();
@@ -29,7 +29,7 @@ app.use(cors({
 // Routes
 app.use("/auth", authRoutes);
 app.use("/test", testRoutes);
-app.use("/movie", movieRoutes); 
+app.use("/movie", movieRoutes);
 app.use("/event", eventRoutes);
 app.use("/review", reviewRoutes);
 app.use("/booking", bookingRoutes);

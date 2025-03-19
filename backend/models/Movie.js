@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const movieSchema = new mongoose.Schema({
     title: { type: String, unique: true, required: true },
-    description : { type: String, required: true, default:'' },
+    description: { type: String, required: true, default: '' },
     genre: [String],
     language: { type: String, required: true },
     subtitles: [String],
@@ -18,13 +18,13 @@ const movieSchema = new mongoose.Schema({
     imageUrl: String,
     trailerUrl: String,
     releaseDate: { type: Date, required: true },
-    endDate: { 
-        type: Date, 
+    endDate: {
+        type: Date,
         validate: {
             validator: function (value) { return this.releaseDate < value; },
             message: "End date must be after release date"
         },
-        default: function () { 
+        default: function () {
             return new Date(this.releaseDate.getTime() + 2 * 30 * 24 * 60 * 60 * 1000); // default end date is 2 months after release date
         }
     }

@@ -107,7 +107,7 @@ const deleteMovie = async (req, res) => {
 
         // Sau khi xóa suất chiếu, tiến hành xóa Movie
         await movie.deleteOne();
-        
+
         res.status(200).json({ message: "Movie has been deleted" });
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -116,7 +116,7 @@ const deleteMovie = async (req, res) => {
 
 const addShowtime = async (req, res) => {
     const { movieId } = req.params;
-    const { startTime, endTime,roomId, type, pricing, } = req.body;
+    const { startTime, endTime, roomId, type, pricing, } = req.body;
 
     try {
         const showtime = await Showtime.create({
@@ -128,7 +128,7 @@ const addShowtime = async (req, res) => {
             pricing,
         });
 
-        res.status(201).json({message: "Showtime has been created"});
+        res.status(201).json({ message: "Showtime has been created" });
     } catch (error) {
         console.log(error);
         if (error.name === 'ValidationError') {
@@ -160,6 +160,8 @@ const getAllRoom = async (req, res) => {
     }
 }
 
+
+
 const adminController = {
     getAllUsers,
     changeStatusUser,
@@ -172,6 +174,6 @@ const adminController = {
     deleteMovie,
     addShowtime,
     deleteShowtime,
-    getAllRoom
+    getAllRoom,
 };
 module.exports = adminController;
