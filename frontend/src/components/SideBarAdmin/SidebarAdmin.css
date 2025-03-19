@@ -56,4 +56,5 @@
 .sidebar-admin li.active {
   background-color: #007bff;
   font-weight: bold;
+  border-radius: 0px;
 }
