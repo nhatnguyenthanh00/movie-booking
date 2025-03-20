@@ -85,6 +85,11 @@
   border-color: #e0a800;
 }
 
+.seat.vip {
+  background: #ffc107;
+  border-color: #e0a800;
+}
+
 .seat:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -130,4 +135,9 @@
 
 .btn-book:active {
   transform: scale(0.98);
+}
+.seat.selected {
+  background: #4caf50 !important;
+  color: white;
+  border-color: #45a049;
 }

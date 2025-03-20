@@ -69,7 +69,7 @@ const ShowtimeDetail = () => {
                       selectedSeats.includes(seat.seatInfo.seatNumber)
                         ? "selected"
                         : ""
-                    } ${seat.seatInfo.type}`}
+                    } ${seat.seatInfo.type.toLowerCase()}`} // Đảm bảo 'vip' được nhận diện đúng
                     onClick={() => toggleSeatSelection(seat)}
                   >
                     {seat.seatInfo.seatNumber.slice(1)}
