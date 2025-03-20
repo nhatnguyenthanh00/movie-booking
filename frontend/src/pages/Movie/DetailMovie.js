@@ -235,31 +235,28 @@ const MovieDetail = () => {
 
         {/* Hiển thị danh sách đánh giá */}
         <div className="mt-5">
-          {reviews?.map(
-            (review, index) =>
-              review ? ( // Check if review is defined
-                <Row className="mb-5 border-bottom" key={index}>
-                  <Col md={9}>
-                    <div>
-                      <strong className="mb-2 text-muted">
-                        Khách: {renderStars(review?.rating || 0)}{" "}
-                      </strong>
-                      <br />
-                      <strong>{review.comment}</strong>
-                      <div className="text-muted">
-                        <small>
-                          {new Date(review.createdAt).toLocaleDateString()}
-                        </small>
-                      </div>
+          {reviews?.map((review, index) =>
+            review ? (
+              <Row className="mb-5 border-bottom" key={index}>
+                <Col md={9}>
+                  <div>
+                    <strong className="mb-2 text-muted">
+                      Khách: {renderStars(review?.rating || 0)}{" "}
+                    </strong>
+                    <br />
+                    <strong>{review.comment}</strong>
+                    <div className="text-muted">
+                      <small>
+                        {new Date(review.createdAt).toLocaleDateString()}
+                      </small>
                     </div>
-                  </Col>
-                  <Col md={3}>
-                    <div className="text-center">
-                      {/* <div>{maskEmail(review.user?.email)}</div>{" "} */}
-                    </div>
-                  </Col>
-                </Row>
-              ) : null // Fallback for undefined reviews
+                  </div>
+                </Col>
+                <Col md={3}>
+                  <div className="text-center"></div>
+                </Col>
+              </Row>
+            ) : null
           )}
         </div>
       </Container>
