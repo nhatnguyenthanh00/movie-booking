@@ -82,7 +82,7 @@ const getAllMovies = async (req, res) => {
 const addNewMovie = async (req, res) => {
   try {
     const newMovie = new Movie(req.body);
-    await newMovie.validate(); // Kiểm tra validation trước khi lưu
+    await newMovie.validate();
     const savedMovie = await newMovie.save();
     res.status(201).json(savedMovie);
   } catch (err) {

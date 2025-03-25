@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Container, Row, Col, Table, Form, Modal } from "react-bootstrap";
 import moviesApi from "../../api/MovieApi";
-import {getAllShowtimeMovie} from "../../api/showtimeApi";
+import {getAllShowtimeMovie, getShowtimeByDay} from "../../api/showtimeApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./DetailMovieForAdmin.css";
 
@@ -39,9 +39,8 @@ const DetailMovieForAdmin = () => {
   
       const fetchShowtimesByDate = async () => {
           try {
-            const data = await getAllShowtimeMovie(movieId);
-            console.log(data.data)
-            setShowtimes(data.data)
+            const data = await getShowtimeByDay(movieId, '');
+            setShowtimes(data)
           } catch (error) {
             console.error("Lỗi khi lấy lịch chiếu", error);
           }
@@ -131,7 +130,7 @@ const DetailMovieForAdmin = () => {
           </tr>
         </thead>
         <tbody>
-          {showtimes.length > 0 ? showtimes?.map((show, index) => (
+          {showtimes?.length > 0 ? showtimes?.map((show, index) => (
             <tr key={show._id}>
               <td>{index + 1}</td>
               <td>{new Date(show.startTime).toLocaleDateString()}</td>
