@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Button } from "react-bootstrap";
 import { getShowtimeById } from "../../api/showtimeApi";
+import { fetchUser } from "../../services/authen";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./ShowtimeDetail.css";
 
@@ -9,28 +10,63 @@ const ShowtimeDetail = () => {
   const { showtimeId } = useParams();
   const [showtime, setShowtime] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [seatPrices, setSeatPrices] = useState({});
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [user, setUser] = useState(null);
+  const [agreed, setAgreed] = useState(false);
+  const [showPayment, setShowPayment] = useState(false);
 
   useEffect(() => {
-    const fetchShowtime = async () => {
+    const fetchData = async () => {
       try {
         const today = new Date().toISOString().split("T")[0];
-        const data = await getShowtimeById(showtimeId, today);
-        setShowtime(data);
+        const showtimeData = await getShowtimeById(showtimeId, today);
+        setShowtime(showtimeData);
+        setSeatPrices(showtimeData.pricing);
+
+        const userData = await fetchUser();
+        setUser(userData);
       } catch (error) {
         console.error("Lỗi API:", error);
       }
     };
-    fetchShowtime();
+    fetchData();
   }, [showtimeId]);
 
   const toggleSeatSelection = (seat) => {
     if (seat.status === "booked") return;
 
-    setSelectedSeats((prev) =>
-      prev.includes(seat.seatInfo.seatNumber)
-        ? prev.filter((s) => s !== seat.seatInfo.seatNumber)
-        : [...prev, seat.seatInfo.seatNumber]
-    );
+    setSelectedSeats((prev) => {
+      let newSeats;
+      if (prev.some((s) => s.seatNumber === seat.seatInfo.seatNumber)) {
+        newSeats = prev.filter((s) => s.seatNumber !== seat.seatInfo.seatNumber);
+      } else {
+        newSeats = [
+          ...prev,
+          { seatNumber: seat.seatInfo.seatNumber, price: seatPrices[seat.seatInfo.type.toLowerCase()] },
+        ];
+      }
+
+      const newTotal = newSeats.reduce((sum, seat) => sum + seat.price, 0);
+      setTotalPrice(newTotal);
+      return newSeats;
+    });
+  };
+
+  const handleBooking = () => {
+    if (selectedSeats.length === 0) {
+      alert("Vui lòng chọn ghế trước khi đặt vé!");
+      return;
+    }
+    setShowPayment(true);
+  };
+
+  const handlePayment = () => {
+    if (!agreed) {
+      alert("Bạn cần đồng ý với điều khoản trước khi thanh toán!");
+      return;
+    }
+    alert("Đang chuyển hướng đến cổng thanh toán...");
   };
 
   const groupedSeats = showtime?.seats?.reduce((acc, seat) => {
@@ -42,9 +78,7 @@ const ShowtimeDetail = () => {
 
   Object.keys(groupedSeats || {}).forEach((key) => {
     groupedSeats[key].sort(
-      (a, b) =>
-        parseInt(a.seatInfo.seatNumber.slice(1)) -
-        parseInt(b.seatInfo.seatNumber.slice(1))
+      (a, b) => parseInt(a.seatInfo.seatNumber.slice(1)) - parseInt(b.seatInfo.seatNumber.slice(1))
     );
   });
 
@@ -66,10 +100,8 @@ const ShowtimeDetail = () => {
                   <div
                     key={seat.seatInfo.seatNumber}
                     className={`seat ${seat.status} ${
-                      selectedSeats.includes(seat.seatInfo.seatNumber)
-                        ? "selected"
-                        : ""
-                    } ${seat.seatInfo.type.toLowerCase()}`} // Đảm bảo 'vip' được nhận diện đúng
+                      selectedSeats.some((s) => s.seatNumber === seat.seatInfo.seatNumber) ? "selected" : ""
+                    } ${seat.seatInfo.type.toLowerCase()}`}
                     onClick={() => toggleSeatSelection(seat)}
                   >
                     {seat.seatInfo.seatNumber.slice(1)}
@@ -81,25 +113,47 @@ const ShowtimeDetail = () => {
       </div>
 
       <div className="legend-container">
-        <div className="legend-item">
-          <div className="seat available"></div> Trống
-        </div>
-        <div className="legend-item">
-          <div className="seat booked"></div> Đã đặt
-        </div>
-        <div className="legend-item">
-          <div className="seat selected"></div> Đang chọn
-        </div>
-        <div className="legend-item">
-          <div className="seat VIP"></div> VIP
-        </div>
+        <div className="legend-item"><div className="seat available"></div> Trống</div>
+        <div className="legend-item"><div className="seat booked"></div> Đã đặt</div>
+        <div className="legend-item"><div className="seat selected"></div> Đang chọn</div>
+        <div className="legend-item"><div className="seat VIP"></div> VIP</div>
       </div>
 
       <div className="text-center mt-4">
-        <Button variant="success" className="btn-book">
+        <Button variant="success" className="btn-book" onClick={handleBooking}>
           Đặt vé ({selectedSeats.length} ghế)
         </Button>
       </div>
+
+      {showPayment && (
+        <div className="paymentBox">
+          <p className="payment-title">Thông tin vé đặt</p>
+          <div className="payment">
+            <div className="merchant-info">
+              <p><strong>Thông tin phim:</strong></p>
+              <p><strong>Tên phim:</strong> {showtime.movie.title}</p>
+              <p><strong>Phòng:</strong> {showtime.room?.name}</p>
+              <p><strong>Ghế đã chọn:</strong> {selectedSeats.map(s => s.seatNumber).join(", ")}</p>
+              <p><strong>Giá: {totalPrice} VND</strong></p>
+            </div>
+
+            <div className="customer-info">
+              <p><strong>Thông tin người đặt:</strong></p>
+              <p><strong>Họ tên:</strong> {user?.name}</p>
+              <p><strong>Email:</strong> {user?.email}</p>
+              <p><strong>Điện thoại:</strong> {user?.phone}</p>
+            </div>
+
+            <div className="payment-actions">
+              <button className="pay-btn" onClick={handlePayment} disabled={!agreed}>
+                THANH TOÁN
+              </button>
+            </div>
+          </div>
+        </div>
+
+      )}
+
     </Container>
   );
 };
