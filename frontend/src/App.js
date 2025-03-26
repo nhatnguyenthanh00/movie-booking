@@ -36,6 +36,7 @@ import Profile from "./pages/Login/profile";
 import SideBarAdmin from "./components/SideBarAdmin/SideBarAdmin";
 import ManageUser from "./pages/AdminPanel/ManageUser";
 import ShowtimeDetail from "./pages/Movie/ShowtimeDetail";
+import PaymentSusses from "./pages/Movie/PaymentSusses";
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -73,6 +74,7 @@ const App = () => {
             <Route path="/register" element={<SignUp />} />
             <Route path="/verify-otp" element={<VerifyOtp />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/payment-success" element={<PaymentSusses />} />
             <Route
               path="/me"
               element={

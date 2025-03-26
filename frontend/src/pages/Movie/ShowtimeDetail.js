@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Button } from "react-bootstrap";
 import { getShowtimeById } from "../../api/showtimeApi";
+
+import BokkingApi from "../../api/bookingApi.js";
+
+import PaymentApi from "../../api/paymentApi.js";
 import { fetchUser } from "../../services/authen";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./ShowtimeDetail.css";
@@ -39,11 +43,17 @@ const ShowtimeDetail = () => {
     setSelectedSeats((prev) => {
       let newSeats;
       if (prev.some((s) => s.seatNumber === seat.seatInfo.seatNumber)) {
-        newSeats = prev.filter((s) => s.seatNumber !== seat.seatInfo.seatNumber);
+        newSeats = prev.filter(
+          (s) => s.seatNumber !== seat.seatInfo.seatNumber
+        );
       } else {
         newSeats = [
           ...prev,
-          { seatNumber: seat.seatInfo.seatNumber, price: seatPrices[seat.seatInfo.type.toLowerCase()] },
+          {
+            seatId: seat.seatInfo._id,
+            seatNumber: seat.seatInfo.seatNumber,
+            price: seatPrices[seat.seatInfo.type.toLowerCase()],
+          },
         ];
       }
 
@@ -62,11 +72,24 @@ const ShowtimeDetail = () => {
   };
 
   const handlePayment = () => {
-    if (!agreed) {
-      alert("Bạn cần đồng ý với điều khoản trước khi thanh toán!");
-      return;
-    }
-    alert("Đang chuyển hướng đến cổng thanh toán...");
+    console.log("day neu", selectedSeats);
+    const data = {
+      // user: user._id,
+      showtime: showtime._id,
+      seats: selectedSeats.map((s) => ({ seat: s.seatId })),
+    };
+    BokkingApi.createBooking(data).then((res) => {
+      if (res.status === 201) {
+        PaymentApi.createPayment({
+          orderInfo: res._id,
+          amount: totalPrice,
+        }).then((res) => {
+          if (res.status === 200) {
+            window.location.href = res.data.paymentUrl;
+          }
+        });
+      }
+    });
   };
 
   const groupedSeats = showtime?.seats?.reduce((acc, seat) => {
@@ -78,7 +101,9 @@ const ShowtimeDetail = () => {
 
   Object.keys(groupedSeats || {}).forEach((key) => {
     groupedSeats[key].sort(
-      (a, b) => parseInt(a.seatInfo.seatNumber.slice(1)) - parseInt(b.seatInfo.seatNumber.slice(1))
+      (a, b) =>
+        parseInt(a.seatInfo.seatNumber.slice(1)) -
+        parseInt(b.seatInfo.seatNumber.slice(1))
     );
   });
 
@@ -100,7 +125,11 @@ const ShowtimeDetail = () => {
                   <div
                     key={seat.seatInfo.seatNumber}
                     className={`seat ${seat.status} ${
-                      selectedSeats.some((s) => s.seatNumber === seat.seatInfo.seatNumber) ? "selected" : ""
+                      selectedSeats.some(
+                        (s) => s.seatNumber === seat.seatInfo.seatNumber
+                      )
+                        ? "selected"
+                        : ""
                     } ${seat.seatInfo.type.toLowerCase()}`}
                     onClick={() => toggleSeatSelection(seat)}
                   >
@@ -113,10 +142,18 @@ const ShowtimeDetail = () => {
       </div>
 
       <div className="legend-container">
-        <div className="legend-item"><div className="seat available"></div> Trống</div>
-        <div className="legend-item"><div className="seat booked"></div> Đã đặt</div>
-        <div className="legend-item"><div className="seat selected"></div> Đang chọn</div>
-        <div className="legend-item"><div className="seat VIP"></div> VIP</div>
+        <div className="legend-item">
+          <div className="seat available"></div> Trống
+        </div>
+        <div className="legend-item">
+          <div className="seat booked"></div> Đã đặt
+        </div>
+        <div className="legend-item">
+          <div className="seat selected"></div> Đang chọn
+        </div>
+        <div className="legend-item">
+          <div className="seat VIP"></div> VIP
+        </div>
       </div>
 
       <div className="text-center mt-4">
@@ -130,30 +167,47 @@ const ShowtimeDetail = () => {
           <p className="payment-title">Thông tin vé đặt</p>
           <div className="payment">
             <div className="merchant-info">
-              <p><strong>Thông tin phim:</strong></p>
-              <p><strong>Tên phim:</strong> {showtime.movie.title}</p>
-              <p><strong>Phòng:</strong> {showtime.room?.name}</p>
-              <p><strong>Ghế đã chọn:</strong> {selectedSeats.map(s => s.seatNumber).join(", ")}</p>
-              <p><strong>Giá: {totalPrice} VND</strong></p>
+              <p>
+                <strong>Thông tin phim:</strong>
+              </p>
+              <p>
+                <strong>Tên phim:</strong> {showtime.movie.title}
+              </p>
+              <p>
+                <strong>Phòng:</strong> {showtime.room?.name}
+              </p>
+              <p>
+                <strong>Ghế đã chọn:</strong>{" "}
+                {selectedSeats.map((s) => s.seatNumber).join(", ")}
+              </p>
+              <p>
+                <strong>Giá: {totalPrice} VND</strong>
+              </p>
             </div>
 
             <div className="customer-info">
-              <p><strong>Thông tin người đặt:</strong></p>
-              <p><strong>Họ tên:</strong> {user?.name}</p>
-              <p><strong>Email:</strong> {user?.email}</p>
-              <p><strong>Điện thoại:</strong> {user?.phone}</p>
+              <p>
+                <strong>Thông tin người đặt:</strong>
+              </p>
+              <p>
+                <strong>Họ tên:</strong> {user?.name}
+              </p>
+              <p>
+                <strong>Email:</strong> {user?.email}
+              </p>
+              <p>
+                <strong>Điện thoại:</strong> {user?.phone}
+              </p>
             </div>
 
             <div className="payment-actions">
-              <button className="pay-btn" onClick={handlePayment} disabled={!agreed}>
+              <button className="pay-btn" onClick={handlePayment}>
                 THANH TOÁN
               </button>
             </div>
           </div>
         </div>
-
       )}
-
     </Container>
   );
 };
