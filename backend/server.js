@@ -1,11 +1,18 @@
 // Load environment variables from .env file
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/authRoute");
+const testRoutes = require("./routes/testRoute");
+const movieRoutes = require("./routes/movieRoute");
+const eventRoutes = require("./routes/eventRoute");
+const reviewRoutes = require("./routes/reviewRoute");
+const bookingRoutes = require("./routes/bookingRoute");
+const paymentRoutes = require("./routes/paymentRoute");
+const adminRoutes = require("./routes/adminRoute");
 const {checkAuthorize} = require("./middleware/authMiddleware");
+const DB = require("./config/db");
 
 const app = express();
 const port = process.env.PORT || 9999;
@@ -19,15 +26,15 @@ app.use(cors({
   credentials: true
 }));
 
-
-// Database connection
-mongoose
-  .connect(process.env.DB_CONNECTION, {dbName: process.env.DB_NAME})
-  .then(() => console.log("Connected to the database"))
-  .catch((err) => console.error("Could not connect to the database", err));
-
 // Routes
 app.use("/auth", authRoutes);
+app.use("/test", testRoutes);
+app.use("/movie", movieRoutes); 
+app.use("/event", eventRoutes);
+app.use("/review", reviewRoutes);
+app.use("/booking", bookingRoutes);
+app.use("/payment", paymentRoutes);
+app.use("/admin", checkAuthorize(["admin"]), adminRoutes);
 
 app.get("/admin-only", checkAuthorize(["admin"]), (req, res) => {
   res.json({ message: "Admin only route" });
@@ -36,4 +43,6 @@ app.get("/admin-only", checkAuthorize(["admin"]), (req, res) => {
 // Start server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+  // Database connection
+  DB.connectDB();
 });

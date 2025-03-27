@@ -34,6 +34,7 @@ const sendEmail = async (email, otp, type) => {
       await transporter.sendMail(mailOptions);
     } catch (error) {
       console.log("Lỗi khi gửi email:", error);
+      throw new Error("Không thể gửi email. Vui lòng thử lại!");
     }
 };
 
